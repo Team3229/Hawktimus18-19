@@ -4,10 +4,10 @@ using namespace std;
 
 int main()
 {
-	int num1, num2, answer;
+	double num1, num2, answer;
 	char choice;
 
-	cout << "Enter 2 integers, press enter in-between the first and second." << endl;
+	cout << "Enter 2 numbers, press enter in-between the first and second." << endl;
 	cin >> num1;
 	cin >> num2;
 
@@ -22,8 +22,8 @@ int main()
 		answer = num1 * num2;
 	else if (choice == '/')
 		answer = num1 / num2;
-	else if (choice == '%')
-		answer = num1 % num2;
+	else if (choice == '%') //% dividing only works with integers, so we need to convert
+		answer = int(num1) % int(num2); //The int() function converts the data type to integer
 	else
 		choice = 'i';
 
