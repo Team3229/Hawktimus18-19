@@ -4,14 +4,14 @@ using namespace std;
 
 int main()
 {
-	double num1, num2, answer;
+	int num1, num2, answer;
 	char choice;
 
-	cout << "Enter 2 numbers, press enter in-between the first and second." << endl;
+	cout << "Enter 2 integers, press enter in-between the first and second." << endl;
 	cin >> num1;
 	cin >> num2;
 
-	cout << "Now enter the requested operation for the 2 numbers (+, -, *, /)" << endl;
+	cout << "Now enter the requested operation for the 2 numbers (+, -, *, /, %)" << endl;
 	cin >> choice;
 
 	if (choice == '+')
@@ -22,6 +22,8 @@ int main()
 		answer = num1 * num2;
 	else if (choice == '/')
 		answer = num1 / num2;
+	else if (choice == '%')
+		answer = num1 % num2;
 	else
 		choice = 'i';
 
