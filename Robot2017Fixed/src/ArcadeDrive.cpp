@@ -51,6 +51,8 @@ void ArcadeDrive::Drive (double Y, double X)
 		}
 	}
 
+	X = -X;
+
 	if(abs(X) > MAX_POWER) //Make sure the absolute value of x is not greater than the max power
 	{
 		if (X < 0) //If we are moving left (second and third quadrants).
