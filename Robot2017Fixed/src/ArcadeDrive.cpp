@@ -7,6 +7,12 @@ ArcadeDrive::ArcadeDrive()
 
 	//Set the safety timer on the motor system
 	myDriveTrain.SetExpiration(SAFETY_TIMEOUT);
+
+	//turns off safety
+	leftFront.SetSafetyEnabled(false);
+	leftBack.SetSafetyEnabled(false);
+	rightFront.SetSafetyEnabled(false);
+	rightBack.SetSafetyEnabled(false);
 }
 
 

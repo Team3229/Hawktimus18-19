@@ -67,7 +67,7 @@ public:
 	void TeleopPeriodic()
 	{
 		double Y, X; //An x and y coordinate.
-		std::cout << "TeleopPeriodic()" << std::endl;
+		//std::cout << "TeleopPeriodic()" << std::endl;
 
 		//Drive (left hand joystick on the controller)
 		//Get both the x and y coordinates from the left joystick.
@@ -92,7 +92,6 @@ public:
 		{
 			climberMotor.Stop(); //button released
 		}
-
 		Wait(0.05);
 	}
 
