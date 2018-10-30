@@ -20,9 +20,14 @@ void Rectangle::setValues(double l, double w)
 
 int main()
 {
+    double num1, num2; // makes 2 variables for user input    
 	Rectangle rect1; //Creates an object of class Rectangle
 
-	rect1.setValues(3.4, 5.8); //Passes in values for length and width
+    cout << "Enter two numbers, seperated by enter: ";
+    cin >> num1;
+    cin >> num2;
+
+	rect1.setValues(num1, num2); //Passes in values for length and width
 
 	cout << "Area of rectangle: " << rect1.getArea() << endl;
 
