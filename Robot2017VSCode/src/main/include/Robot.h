@@ -24,9 +24,10 @@
 #include <Timer.h> //For wait function
 
 //Includes from programmer-defined files.
-#include <Climber.h>
-#include <ArcadeDrive.h>
-#include <Autonomous.h>
+#include "Climber.h"
+#include "ArcadeDrive.h"
+#include "Autonomous.h"
+#include "Limelight.h"
 
 #define XBOX_USB_PORT 0 //Defines the port for the XBox controller
 #define DEAD_BAND 0.1 //Sets the dead band for the XBox controller.
