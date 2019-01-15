@@ -27,12 +27,12 @@ void Limelight::GetInstance()
 	pipeline = table->GetEntry("pipeline");
 	cammode = table->GetEntry("camMode");
 
-    frc::SmartDashboard::PutNumber("validObject", validObject.GetDouble(-1));
-	frc::SmartDashboard::PutNumber("HorizOffset", xOffSet.GetDouble(0));
+    //frc::SmartDashboard::PutNumber("validObject", validObject.GetDouble(-1));
+	//frc::SmartDashboard::PutNumber("HorizOffset", xOffSet.GetDouble(0));
 
     // testing variables
     std::cout << IsTargeting();
-    GetOffsetAngle();
+    m_angle = GetOffsetAngle();
 
 }
 

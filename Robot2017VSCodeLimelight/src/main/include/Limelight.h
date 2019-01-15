@@ -26,6 +26,7 @@ private:
 
     double LED_MODE = 3;
 	double m_camMode = 0;
+	double m_angle;
 
 public:
     Limelight();

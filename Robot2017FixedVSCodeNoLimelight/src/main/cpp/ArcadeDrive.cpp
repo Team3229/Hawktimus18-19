@@ -7,6 +7,12 @@ ArcadeDrive::ArcadeDrive()
 
 	//Set the safety timer on the motor system
 	myDriveTrain.SetExpiration(SAFETY_TIMEOUT);
+
+	//turns off safety
+	leftFront.SetSafetyEnabled(false);
+	leftBack.SetSafetyEnabled(false);
+	rightFront.SetSafetyEnabled(false);
+	rightBack.SetSafetyEnabled(false);
 }
 
 
@@ -44,6 +50,8 @@ void ArcadeDrive::Drive (double Y, double X)
 			Y = MAX_POWER; //Make sure that y is less than the max power, postive because we are moving backwards.
 		}
 	}
+
+	X = -X;
 
 	if(abs(X) > MAX_POWER) //Make sure the absolute value of x is not greater than the max power
 	{

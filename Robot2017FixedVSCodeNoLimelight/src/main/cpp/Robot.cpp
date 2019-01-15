@@ -28,9 +28,6 @@ private:
 	//Instantiate Chasis (drive train)
 	ArcadeDrive chasis{};
 
-	//Limelight camera
-	Limelight visionSystem{};
-
 public:
 
 	//Runs once on first boot of Robot
@@ -70,7 +67,7 @@ public:
 	void TeleopPeriodic()
 	{
 		double Y, X; //An x and y coordinate.
-		std::cout << "TeleopPeriodic()" << std::endl;
+		//std::cout << "TeleopPeriodic()" << std::endl;
 
 		//Drive (left hand joystick on the controller)
 		//Get both the x and y coordinates from the left joystick.
@@ -95,10 +92,6 @@ public:
 		{
 			climberMotor.Stop(); //button released
 		}
-
-		// vision tracking test
-		visionSystem.GetInstance();
-
 		frc::Wait(0.05);
 	}
 
