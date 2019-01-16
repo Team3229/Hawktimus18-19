@@ -1,37 +1,28 @@
 #ifndef Limelight_H
 #define Limelight_H
 
-#include "frc/smartdashboard/Smartdashboard.h"
+#include "ArcadeDrive.h"
+
 #include <iostream>
 #include "WPILib.h"
+#include "frc/smartdashboard/Smartdashboard.h"
 #include "networktables/NetworkTable.h"
 #include "networktables/NetworkTableEntry.h"
 #include "networktables/NetworkTableInstance.h"
 
+
 class Limelight
 {
 private:
-    std::shared_ptr<nt::NetworkTableInstance> inst;
-	std::shared_ptr<nt::NetworkTable> table;
-
-    nt::NetworkTableEntry validObject;
-	nt::NetworkTableEntry xOffSet;
-	nt::NetworkTableEntry yOffSet;
-	nt::NetworkTableEntry targetArea;
-	nt::NetworkTableEntry skew;
-	nt::NetworkTableEntry latency;
-	nt::NetworkTableEntry ledMode;
-	nt::NetworkTableEntry pipeline;
-	nt::NetworkTableEntry cammode;
-
-    double LED_MODE = 3;
-	double m_camMode = 0;
-	double m_angle;
+    float m_xOffset;
+	float m_yOffset;
+    float m_targetPercent;
+    float m_validObject;
 
 public:
-    Limelight();
-    void GetInstance();
-    double GetOffsetAngle();
+	Limelight();
+    void GetValues();
+    void FaceTarget();
     bool IsTargeting();
 
 };

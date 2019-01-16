@@ -29,7 +29,7 @@ private:
 	ArcadeDrive chasis{};
 
 	//Limelight camera
-	Limelight visionSystem;
+	Limelight visionSystem{};
 
 public:
 
@@ -70,7 +70,7 @@ public:
 	void TeleopPeriodic()
 	{
 		double Y, X; //An x and y coordinate.
-		std::cout << "TeleopPeriodic()" << std::endl;
+		//std::cout << "TeleopPeriodic()" << std::endl;
 
 		//Drive (left hand joystick on the controller)
 		//Get both the x and y coordinates from the left joystick.
@@ -97,7 +97,7 @@ public:
 		}
 
 		// vision tracking test
-		visionSystem.GetInstance();
+		visionSystem.GetValues();
 
 		frc::Wait(0.05);
 	}
