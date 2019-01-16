@@ -29,7 +29,7 @@ void Limelight::GetValues()
     //test
     std::cout << "X offset: " << m_xOffset << std::endl;
     std::cout << "Y offset: " << m_yOffset << std::endl;
-    std::cout << "Percentage of screen filled: " << m_targetPercent << std::endl;
+    std::cout << "% of screen filled: " << m_targetPercent << std::endl;
     if (IsTargeting() == true)
         std::cout << "Object found?: YES" << std::endl;
     else
@@ -46,5 +46,13 @@ bool Limelight::IsTargeting()
 
 void Limelight::FaceTarget()
 {
-
+    GetValues();
+    if (IsTargeting() == false)
+    {
+        visionChasis.Drive(0.0, -0.6);
+    }
+    else
+    {
+        visionChasis.Stop();
+    }
 }

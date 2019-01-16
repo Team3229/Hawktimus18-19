@@ -14,10 +14,13 @@
 class Limelight
 {
 private:
-    float m_xOffset;
-	float m_yOffset;
-    float m_targetPercent;
-    float m_validObject;
+    float m_xOffset; // x angle offset from target
+	float m_yOffset; // y
+    float m_targetPercent; // % of screen filled by current target
+    float m_validObject; // yes/no is there a target on screen
+
+    // drive train
+    ArcadeDrive visionChasis{};
 
 public:
 	Limelight();

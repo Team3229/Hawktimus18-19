@@ -76,6 +76,7 @@ public:
 		//Get both the x and y coordinates from the left joystick.
 		Y = xbox.GetY(frc::GenericHID::kLeftHand);
 		X = xbox.GetX(frc::GenericHID::kLeftHand);
+		//std::cout << "Y: " << Y << " X: " << X << std::endl;
 		if((abs(Y) > DEAD_BAND) || (abs(X) > DEAD_BAND)) //As long as the absolute value of the coordinate is not in the deadband.
 		{
 			//Driver joystick input.
@@ -97,7 +98,7 @@ public:
 		}
 
 		// vision tracking test
-		visionSystem.GetValues();
+		visionSystem.FaceTarget();
 
 		frc::Wait(0.05);
 	}
