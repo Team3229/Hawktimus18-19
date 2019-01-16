@@ -46,7 +46,7 @@ bool Limelight::IsTargeting()
 
 void Limelight::FaceTarget()
 {
-    GetValues();
+    /*GetValues();
     if (IsTargeting() == false)
     {
         visionChasis.Drive(0.0, -0.6);
@@ -54,5 +54,5 @@ void Limelight::FaceTarget()
     else
     {
         visionChasis.Stop();
-    }
+    }*/
 }

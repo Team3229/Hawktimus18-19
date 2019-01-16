@@ -70,6 +70,7 @@ public:
 	void TeleopPeriodic()
 	{
 		double Y, X; //An x and y coordinate.
+		bool controlEnabled = true; // Enable/disable controller for testing
 		//std::cout << "TeleopPeriodic()" << std::endl;
 
 		//Drive (left hand joystick on the controller)
@@ -77,14 +78,17 @@ public:
 		Y = xbox.GetY(frc::GenericHID::kLeftHand);
 		X = xbox.GetX(frc::GenericHID::kLeftHand);
 		//std::cout << "Y: " << Y << " X: " << X << std::endl;
-		if((abs(Y) > DEAD_BAND) || (abs(X) > DEAD_BAND)) //As long as the absolute value of the coordinate is not in the deadband.
+		if (controlEnabled == true)
 		{
-			//Driver joystick input.
-			chasis.Drive(Y, X); //Call drive, passing the given coordinate.
-		}
-		else
-		{
-			chasis.Stop(); //No joystick input, stop moving.
+			if((abs(Y) > DEAD_BAND) || (abs(X) > DEAD_BAND)) //As long as the absolute value of the coordinate is not in the deadband.
+			{
+				//Driver joystick input.
+				chasis.Drive(Y, X); //Call drive, passing the given coordinate.
+			}
+			else
+			{
+				chasis.Stop(); //No joystick input, stop moving.
+			}
 		}
 
 		//Climber (right hand "bumper" button)
@@ -98,7 +102,18 @@ public:
 		}
 
 		// vision tracking test
-		visionSystem.FaceTarget();
+		visionSystem.GetValues();
+		if (xbox.GetAButton())
+		{
+			if (visionSystem.IsTargeting() == false)
+    		{
+        		chasis.Drive(0.0, -0.6);
+    		}
+    		else
+    		{
+        		chasis.Stop();
+    		}
+		}
 
 		frc::Wait(0.05);
 	}
