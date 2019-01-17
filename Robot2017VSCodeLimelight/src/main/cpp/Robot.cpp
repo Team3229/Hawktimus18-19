@@ -108,7 +108,7 @@ public:
 		{
 			if (visionSystem.IsTargeting() == false)
     		{
-        		chasis.Drive(0.0, -0.6);
+        		chasis.Drive(0.0, -0.8);
     		}
     		else
     		{
@@ -120,15 +120,27 @@ public:
 		{
 			if (abs(visionSystem.m_xOffset) < visionSystem.ANGLE_RANGE)
 			{
-				chasis.Stop(); // within desired range = stop
+				//chasis.Stop(); // within desired range = stop
+				if (abs(visionSystem.m_targetDistance - visionSystem.DESIRED_DISTANCE) < visionSystem.DISTANCE_THRESH) 
+				{
+					chasis.Stop(); // inside desired zone
+				}
+				else if (visionSystem.m_targetDistance < visionSystem.DESIRED_DISTANCE)
+				{
+					chasis.Drive(-0.3, 0.0); // forward
+				}
+				else if (visionSystem.m_targetDistance > visionSystem.DESIRED_DISTANCE)
+				{
+					chasis.Drive(0.3, 0.0); // back
+				}
 			}
 			else if (visionSystem.m_xOffset > 0)
 			{
-				chasis.Drive(0.0, 0.3); // right turn
+				chasis.Drive(0.0, 0.35); // right turn
 			}
 			else if (visionSystem.m_xOffset < 0)
 			{
-				chasis.Drive(0.0, -0.3); // left turn
+				chasis.Drive(0.0, -0.35); // left turn
 			}
 		}
 

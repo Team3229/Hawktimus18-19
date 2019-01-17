@@ -23,13 +23,13 @@ void Limelight::GetValues()
     std::shared_ptr<NetworkTable> table = nt::NetworkTableInstance::GetDefault().GetTable("limelight");
 	m_xOffset = table->GetNumber("tx",0.0);
     m_yOffset = table->GetNumber("ty",0.0);
-    m_targetPercent = table->GetNumber("ta",0.0);
+    m_targetDistance = table->GetNumber("ta",0.0);
     m_validObject = table->GetNumber("tv",0.0);
 
     //test
     std::cout << "X offset: " << m_xOffset << std::endl;
     std::cout << "Y offset: " << m_yOffset << std::endl;
-    std::cout << "% of screen filled: " << m_targetPercent << std::endl;
+    std::cout << "Distance variable: " << m_targetDistance << std::endl;
     if (IsTargeting() == true)
         std::cout << "Object found?: YES" << std::endl;
     else
