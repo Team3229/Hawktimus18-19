@@ -14,8 +14,6 @@
 class Limelight
 {
 private:
-    float m_xOffset; // x angle offset from target
-	float m_yOffset; // y
     float m_targetPercent; // % of screen filled by current target
     float m_validObject; // yes/no is there a target on screen
 
@@ -27,6 +25,10 @@ public:
     void GetValues();
     void FaceTarget();
     bool IsTargeting();
+
+    float m_xOffset; // x angle offset from target
+	float m_yOffset; // y
+    const float ANGLE_RANGE = 0.5;
 
 };
 

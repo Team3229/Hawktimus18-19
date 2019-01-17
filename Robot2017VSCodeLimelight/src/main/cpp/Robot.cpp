@@ -103,6 +103,7 @@ public:
 
 		// vision tracking test
 		visionSystem.GetValues();
+
 		if (xbox.GetAButton())
 		{
 			if (visionSystem.IsTargeting() == false)
@@ -113,6 +114,22 @@ public:
     		{
         		chasis.Stop();
     		}
+		}
+
+		if (xbox.GetBButton() && visionSystem.IsTargeting() == true)
+		{
+			if (abs(visionSystem.m_xOffset) < visionSystem.ANGLE_RANGE)
+			{
+				chasis.Stop(); // within desired range = stop
+			}
+			else if (visionSystem.m_xOffset > 0)
+			{
+				chasis.Drive(0.0, 0.3); // right turn
+			}
+			else if (visionSystem.m_xOffset < 0)
+			{
+				chasis.Drive(0.0, -0.3); // left turn
+			}
 		}
 
 		frc::Wait(0.05);

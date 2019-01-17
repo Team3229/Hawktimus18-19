@@ -23,6 +23,7 @@
 #include <LiveWindow/LiveWindow.h>
 #include <Timer.h> //For wait function
 #include "WPILib.h"
+#include <Math.h>
 
 //Includes from programmer-defined files.
 #include "Climber.h"
