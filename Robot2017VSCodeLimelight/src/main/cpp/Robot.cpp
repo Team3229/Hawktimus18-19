@@ -29,7 +29,7 @@ private:
 	ArcadeDrive chasis{};
 
 	//Limelight camera
-	Limelight visionSystem{};
+	Limelight visionSystem{&chasis, &xbox};
 
 public:
 
@@ -101,9 +101,6 @@ public:
 			climberMotor.Stop(); //button released
 		}
 
-		// vision tracking test
-		visionSystem.GetValues();
-
 		if (xbox.GetAButton())
 		{
 			if (visionSystem.IsTargeting() == false)
@@ -116,33 +113,7 @@ public:
     		}
 		}
 
-		if (xbox.GetBButton() && visionSystem.IsTargeting() == true)
-		{
-			if (abs(visionSystem.m_xOffset) < visionSystem.ANGLE_RANGE)
-			{
-				//chasis.Stop(); // within desired range = stop
-				if (abs(visionSystem.m_targetDistance - visionSystem.DESIRED_DISTANCE) < visionSystem.DISTANCE_THRESH) 
-				{
-					chasis.Stop(); // inside desired zone
-				}
-				else if (visionSystem.m_targetDistance < visionSystem.DESIRED_DISTANCE)
-				{
-					chasis.Drive(-0.3, 0.0); // forward
-				}
-				else if (visionSystem.m_targetDistance > visionSystem.DESIRED_DISTANCE)
-				{
-					chasis.Drive(0.3, 0.0); // back
-				}
-			}
-			else if (visionSystem.m_xOffset > 0)
-			{
-				chasis.Drive(0.0, 0.35); // right turn
-			}
-			else if (visionSystem.m_xOffset < 0)
-			{
-				chasis.Drive(0.0, -0.35); // left turn
-			}
-		}
+		visionSystem.SeekTarget();
 
 		frc::Wait(0.05);
 	}
