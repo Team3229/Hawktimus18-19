@@ -23,11 +23,12 @@ private:
 	float m_yOffset; // y "ty"
     float m_targetDistance; // % of screen filled by current target "ta"
     const float ANGLE_RANGE = 2.0;
-    const float DESIRED_DISTANCE = 0.6; // not 3'
+    const float DESIRED_DISTANCE = 0.41; // 5'
     const float DISTANCE_THRESH = 0.05;
 
 public:
 	Limelight(ArcadeDrive * chasis, frc::XboxController * xbox);
+    ~Limelight();
     void GetValues();
     void FaceTarget();
     bool IsTargeting();

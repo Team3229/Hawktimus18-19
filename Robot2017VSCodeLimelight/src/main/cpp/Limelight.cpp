@@ -21,6 +21,12 @@ Limelight::Limelight(ArcadeDrive * chasis, frc::XboxController * xbox)
 
 }
 
+Limelight::~Limelight()
+{
+    delete m_visionChasis;
+    delete m_visionXbox;
+}
+
 void Limelight::GetValues()
 {
     std::shared_ptr<NetworkTable> table = nt::NetworkTableInstance::GetDefault().GetTable("limelight");
