@@ -56,5 +56,4 @@ class Robot : public frc::IterativeRobot {
   frc::XboxController xbox1 {XBOX_USB_DRIVER_1}; //Chassis driver
   frc::XboxController xbox2 {XBOX_USB_DRIVER_2}; //Manipulation driver
 
-
 };

@@ -58,6 +58,16 @@ void Robot::TeleopPeriodic()
   d2_leftY = xbox2.GetY(frc::GenericHID::kLeftHand);
   d2_rightY = xbox2.GetY(frc::GenericHID::kRightHand);
 
+  //Drive robot
+  if(abs(d1_leftX) > DEAD_BAND || abs(d1_leftY) > DEAD_BAND || abs(d1_rightX) > DEAD_BAND)
+	{
+		chassis.Drive(d1_leftY, d1_leftX, d1_rightX);
+	}
+	else
+	{
+		chassis.Stop();
+	}
+  
 
 
 }
