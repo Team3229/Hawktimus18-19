@@ -40,6 +40,7 @@ DriveSystem::~DriveSystem()
 	delete leftFollower;
 	delete rightFollower;
 	delete driveTrain;
+	delete navX;
 }
 
 void DriveSystem::Drive(double& Y, double& X, double& Z)
