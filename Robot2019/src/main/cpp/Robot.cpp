@@ -50,6 +50,15 @@ void Robot::TeleopInit()
 
 void Robot::TeleopPeriodic() 
 {
+  //Update controller axis values
+  d1_leftY = xbox1.GetY(frc::GenericHID::kLeftHand);
+  d1_leftX = xbox1.GetX(frc::GenericHID::kLeftHand);
+  d1_rightX = xbox1.GetX(frc::GenericHID::kRightHand);
+  
+  d2_leftY = xbox2.GetY(frc::GenericHID::kLeftHand);
+  d2_rightY = xbox2.GetY(frc::GenericHID::kRightHand);
+
+
 
 }
 

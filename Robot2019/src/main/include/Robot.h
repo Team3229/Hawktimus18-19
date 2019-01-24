@@ -42,8 +42,19 @@ class Robot : public frc::IterativeRobot {
   const std::string kAutoNameCustom = "My Auto";
   std::string m_autoSelected;
 
-  // objects of subsystems
+  // constants
+  const XBOX_USB_DRIVER_1 = 0;
+  const XBOX_USB_DRIVER_2 = 1;
+  const DEAD_BAND = 0.1;
 
+  // controller variable
+  double d1_leftY, d1_leftX, d1_rightX, d2_leftY, d2_rightY;
+
+  // objects of subsystems
+  DriveSystem chassis{};
+  
+  frc::XboxController xbox1 {XBOX_USB_DRIVER_1}; //Chassis driver
+  frc::XboxController xbox2 {XBOX_USB_DRIVER_2}; //Manipulation driver
 
 
 };
