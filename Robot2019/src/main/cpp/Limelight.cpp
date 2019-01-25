@@ -53,19 +53,6 @@ bool Limelight::IsTargeting()
 		return false;
 }
 
-void Limelight::FaceTarget()
-{
-    GetValues();
-    if (IsTargeting() == false)
-    {
-        visionChassis->Drive(0.0, -0.6);
-    }
-    else
-    {
-        visionChassis->Stop();
-    }
-}
-
 void Limelight::SeekTarget()
 {
     GetValues();

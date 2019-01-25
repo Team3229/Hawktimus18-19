@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "WPILib.h"
+#include <Timer.h>
 
 class Climb
 {
@@ -20,6 +21,8 @@ private:
 
     // Compressor(s)
     frc::Compressor placeholder{0};
+
+    frc::Timer actuatorTimer{};
 
     // ports
     const int FRONT_LEFT_ID = 0;

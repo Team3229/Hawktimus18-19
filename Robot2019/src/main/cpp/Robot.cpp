@@ -70,7 +70,14 @@ void Robot::TeleopPeriodic()
 		chassis.Stop();
 	}
   
+  if (xbox1.GetAButton)
+    chassis.ChangeSpeed(2); // normal speed
 
+  if (xbox1.GetBButton)
+    chassis.ChangeSpeed(1); // slow speed
+
+  if (xbox1.GetXButton)
+    chassis.ChangeSpeed(3); // fast
 
 }
 

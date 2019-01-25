@@ -18,7 +18,7 @@ void Intake::RunWheels(bool triggerRL)
 {
     if(triggerRL == true)
         intakeWheels->Set(PercentOutput, WHEEL_POWER);//Spins Intake wheels in
-    else if(triggerRL == false)
+    else
         intakeWheels->Set(PercentOutput, -WHEEL_POWER); //Spins Intake wheels out
 }
 
@@ -35,7 +35,7 @@ void Intake::MoveIntake(bool upOrDown)
        intakePivot->Set(PercentOutput, -PIVOT_POWER); //Points Inatake down
     
 }
-void Intake::StopIntake()
+void Intake::StopIntakePivot()
 {
     intakePivot->Set(PercentOutput, HOLD_POWER);//Stops pivot
 }

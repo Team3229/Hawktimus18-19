@@ -12,7 +12,7 @@ public:
     void RunWheels(bool direction); // run intake wheels
     void MoveIntake(bool direction); // pivot intake on motor
     void StopWheels();
-    void StopIntake();
+    void StopIntakePivot();
 
 private:
     WPI_VictorSPX * intakeWheels; // Motor for wheels on intake

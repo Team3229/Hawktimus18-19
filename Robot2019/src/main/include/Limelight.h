@@ -15,7 +15,6 @@ public:
     Limelight(DriveSystem * chassis);
     ~Limelight();
     void GetValues();
-    void FaceTarget();
     bool IsTargeting();
     void SeekTarget();  
 
