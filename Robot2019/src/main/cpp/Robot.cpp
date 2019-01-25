@@ -59,7 +59,7 @@ void Robot::TeleopPeriodic()
   d2_rightY = xbox2.GetY(frc::GenericHID::kRightHand);
 
   //Drive robot
-  debug(chassis.TestGyro() << std::endl);
+  debug("Gyro angle: " << chassis.TestGyro() << std::endl);
   if(abs(d1_leftX) > DEAD_BAND || abs(d1_leftY) > DEAD_BAND || abs(d1_rightX) > DEAD_BAND)
 	{
 		chassis.Drive(d1_leftY, d1_leftX, d1_rightX); // drives robot with mecanum chassis
@@ -70,13 +70,13 @@ void Robot::TeleopPeriodic()
 	}
   
   // speed changer
-  if (xbox1.GetAButton)
+  if (xbox1.GetAButton())
     chassis.ChangeSpeed(2); // normal speed
 
-  if (xbox1.GetBButton)
+  if (xbox1.GetBButton())
     chassis.ChangeSpeed(1); // slow speed
 
-  if (xbox1.GetXButton)
+  if (xbox1.GetXButton())
     chassis.ChangeSpeed(3); // fast
 
   // pneumatic climb
@@ -107,7 +107,7 @@ void Robot::TeleopPeriodic()
 
   // limelight vision
   debug(visionSystem.TestValues() << std::endl);
-  if (xbox1.GetBackButton)
+  if (xbox1.GetBackButton())
     visionSystem.SeekTarget();
 
   // lift operation

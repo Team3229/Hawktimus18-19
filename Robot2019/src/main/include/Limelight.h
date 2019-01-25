@@ -1,10 +1,9 @@
 // Author: Team 3229 Programming Subteam
 
 #include "DriveSystem.h"
-#include "Debug.h"
 
 #include <iostream>
-#include "WPILib.h"
+#include "frc/WPILib.h"
 #include "frc/smartdashboard/Smartdashboard.h"
 #include "networktables/NetworkTable.h"
 #include "networktables/NetworkTableEntry.h"
@@ -16,7 +15,7 @@ public:
     Limelight(DriveSystem * chassis);
     ~Limelight();
     void GetValues();
-    std::string TestValues();
+    void TestValues();
     bool IsTargeting();
     void SeekTarget();  
 
@@ -30,7 +29,13 @@ private:
     
     //threshholds and desires
     const float ANGLE_RANGE = 2.0;
+    const float DESIRED_ANGLE = 0.0;
     const float DESIRED_DISTANCE = 0.41; // 5'
     const float DISTANCE_THRESH = 0.05;
+
+    // drive powers
+    double m_stillPow = 0.0;
+    double m_leftAdjPow = 0.3;
+    double m_rightAdjPow = -0.3;
 
 };

@@ -15,8 +15,7 @@
 #include <frc/smartdashboard/SendableChooser.h>
 
 // our needed includes
-#include <XboxController.h>
-#include <Timer.h>
+#include <frc/XboxController.h>
 #include <Math.h>
 
 // subsystem includes
@@ -28,7 +27,7 @@
 #include "Climb.h"
 #include "Debug.h"
 
-class Robot : public frc::IterativeRobot {
+class Robot : public frc::TimedRobot {
  public:
   void RobotInit() override;
   void RobotPeriodic() override;
@@ -45,9 +44,9 @@ class Robot : public frc::IterativeRobot {
   std::string m_autoSelected;
 
   // constants
-  const XBOX_USB_DRIVER_1 = 0;
-  const XBOX_USB_DRIVER_2 = 1;
-  const DEAD_BAND = 0.1;
+  const int XBOX_USB_DRIVER_1 = 0;
+  const int XBOX_USB_DRIVER_2 = 1;
+  const float DEAD_BAND = 0.1;
 
   // controller variable
   double d1_leftY, d1_leftX, d1_rightX, d2_leftY, d2_rightY;

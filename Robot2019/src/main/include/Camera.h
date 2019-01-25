@@ -4,9 +4,9 @@
 #include <string>
 
 //frc includes
-#include <GenericHID.h>
-#include "WPILib.h"
-#include <CameraServer.h>
+#include <frc/GenericHID.h>
+#include "frc/WPILib.h"
+#include <cameraserver/CameraServer.h>
 #include <cscore_oo.h>
 #include "frc/smartdashboard/Smartdashboard.h"
 

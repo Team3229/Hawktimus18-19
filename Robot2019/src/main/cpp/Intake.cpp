@@ -5,7 +5,7 @@
 Intake::Intake()
 {
     intakeWheels = new WPI_VictorSPX(WHEEL_PORT); //Setting intake wheel port
-    intakePivot = new WPI_VicotrSPX(PIVOT_PORT); //Setting intake pivot port
+    intakePivot = new WPI_VictorSPX(PIVOT_PORT); //Setting intake pivot port
 } 
 
 Intake::~Intake()
@@ -16,26 +16,26 @@ Intake::~Intake()
 
 void Intake::RunWheels(bool direction)
 {
-    if(triggerRL == true)
-        intakeWheels->Set(PercentOutput, WHEEL_POWER);//Spins Intake wheels in
+    if(direction == true)
+        intakeWheels->Set(ControlMode::PercentOutput, WHEEL_POWER);//Spins Intake wheels in
     else
-        intakeWheels->Set(PercentOutput, -WHEEL_POWER); //Spins Intake wheels out
+        intakeWheels->Set(ControlMode::PercentOutput, -WHEEL_POWER); //Spins Intake wheels out
 }
 
 void Intake::StopWheels()
 {
-    intakeWheels->Set(PercentOutput, 0);//stops wheels 
+    intakeWheels->Set(ControlMode::PercentOutput, 0);//stops wheels 
 }
 
 void Intake::MoveIntake(bool direction)
 {
-    if(upOrDown == true)
-       intakePivot->Set(PercentOutput, PIVOT_POWER);//Points Intake up
+    if(direction == true)
+       intakePivot->Set(ControlMode::PercentOutput, PIVOT_POWER);//Points Intake up
     else
-       intakePivot->Set(PercentOutput, -PIVOT_POWER); //Points Inatake down
+       intakePivot->Set(ControlMode::PercentOutput, -PIVOT_POWER); //Points Inatake down
     
 }
 void Intake::StopIntakePivot()
 {
-    intakePivot->Set(PercentOutput, HOLD_POWER);//Stops pivot
+    intakePivot->Set(ControlMode::PercentOutput, HOLD_POWER);//Stops pivot
 }

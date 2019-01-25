@@ -1,8 +1,8 @@
 // Author: Team 3229 Programming Subteam
 
 #include <iostream>
-#include "WPILib.h"
-#include <VictorSPX.h>
+#include "frc/WPILib.h"
+#include "ctre/Phoenix.h"
 
 class Lift
 {

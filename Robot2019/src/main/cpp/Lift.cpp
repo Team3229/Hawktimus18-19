@@ -18,17 +18,17 @@ void Lift::MoveLift(bool direction)
 {
     if (direction == true)
     {
-        liftMotor->Set(PercentOutput, LIFT_POWER); //Lifts the lift up
+        liftMotor->Set(ControlMode::PercentOutput, LIFT_POWER); //Lifts the lift up
     }
     else 
     {
-        liftMotor->Set(PercentOutput, -LIFT_POWER); //Lifts the lift down
+        liftMotor->Set(ControlMode::PercentOutput, -LIFT_POWER); //Lifts the lift down
     }
 }
 
 void Lift::StopLift()
 {
-    liftMotor->Set(PercentOutput, HOLD_POWER); //stops lift
+    liftMotor->Set(ControlMode::PercentOutput, HOLD_POWER); //stops lift
 }
 
 

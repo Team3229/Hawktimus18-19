@@ -46,12 +46,12 @@ DriveSystem::~DriveSystem()
 void DriveSystem::Drive(double& Y, double& X, double& Z)
 {
     //Drive function
-    driveTrain->MecanumDrive_Cartesian(X, Y, Z, navxGyro->GetAngle()); //Optional 4th parameter for gyro input
+    driveTrain->DriveCartesian(X, Y, Z, navxGyro->GetAngle()); //Optional 4th parameter for gyro input
 }
 
 void DriveSystem::Stop()
 {
-    driveTrain->MecanumDrive_Cartesian(0, 0, 0);
+    driveTrain->DriveCartesian(0, 0, 0);
 }
 
 void DriveSystem::ChangeSpeed(int choice)

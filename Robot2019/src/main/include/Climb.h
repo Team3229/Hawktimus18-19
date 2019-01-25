@@ -1,8 +1,8 @@
 // Author: Team 3229 Programming Subteam
 
 #include <iostream>
-#include "WPILib.h"
-#include <Timer.h>
+#include "frc/WPILib.h"
+#include <frc/Timer.h>
 
 class Climb
 {

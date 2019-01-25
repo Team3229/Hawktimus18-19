@@ -4,11 +4,10 @@
 #include <memory>
 #include <Math.h>
 #include "ctre/Phoenix.h"			//add vendor library
-#include <Drive/DifferentialDrive.h>
-#include <GenericHID.h>
-#include "WPILib.h"
-#include <WPI_TalonSRX.h>
-#include "navx/AHRS.h"				//add vendor library
+#include <frc/drive/DifferentialDrive.h>
+#include <frc/GenericHID.h>
+#include "frc/WPILib.h"
+#include "AHRS.h"				//add vendor library
 
 class DriveSystem
 {
