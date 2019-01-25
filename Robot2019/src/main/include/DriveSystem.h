@@ -28,7 +28,7 @@ private:
 	WPI_TalonSRX * rightFollower; //Back right, follower
 
 	frc::MecanumDrive * driveTrain; //Drivetrain
-    AHRS * navX; //navX drive
+    AHRS * navxGyro; //navX drive
 
     //Constants for ports and unique id
 	const int LEFT_LEAD_ID = 1;

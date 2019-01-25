@@ -30,7 +30,7 @@ DriveSystem::DriveSystem()
 	rightFollower->ClearStickyFaults(0);
 
     //navX stuff
-    navX = new AHRS(SPI::Port::kMXP);
+    navxGyro = new AHRS(SPI::Port::kMXP);
 }
 
 DriveSystem::~DriveSystem()
@@ -40,13 +40,13 @@ DriveSystem::~DriveSystem()
 	delete leftFollower;
 	delete rightFollower;
 	delete driveTrain;
-	delete navX;
+	delete navxGyro;
 }
 
 void DriveSystem::Drive(double& Y, double& X, double& Z)
 {
     //Drive function
-    driveTrain->MecanumDrive_Cartesian(X, Y, Z, navX->GetAngle()); //Optional 4th parameter for gyro input
+    driveTrain->MecanumDrive_Cartesian(X, Y, Z, navxGyro->GetAngle()); //Optional 4th parameter for gyro input
 }
 
 void DriveSystem::Stop()
@@ -66,5 +66,5 @@ void DriveSystem::ChangeSpeed(int choice)
 
 double DriveSystem::TestGyro()
 {
-    return navX->GetAngle();
+    return navxGyro->GetAngle();
 }

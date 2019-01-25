@@ -1,6 +1,7 @@
 // Author: Team 3229 Programming Subteam
 
 #include "DriveSystem.h"
+#include "Debug.h"
 
 #include <iostream>
 #include "WPILib.h"
@@ -15,6 +16,7 @@ public:
     Limelight(DriveSystem * chassis);
     ~Limelight();
     void GetValues();
+    std::string TestValues();
     bool IsTargeting();
     void SeekTarget();  
 

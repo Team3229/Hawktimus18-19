@@ -34,15 +34,23 @@ void Limelight::GetValues()
     m_yOffset = table->GetNumber("ty",0.0);
     m_targetDistance = table->GetNumber("ta",0.0);
     m_validObject = table->GetNumber("tv",0.0);
+}
 
-    //test
+std::string Limelight::TestValues()
+{
+    /*
     std::cout << "X offset: " << m_xOffset << std::endl;
     std::cout << "Y offset: " << m_yOffset << std::endl;
     std::cout << "Distance variable: " << m_targetDistance << std::endl;
     if (IsTargeting() == true)
         std::cout << "Object found?: YES" << std::endl;
     else
-        std::cout << "Object found?: NO" << std::endl;
+        std::cout << "Object found?: NO" << std::endl; 
+    */
+   
+    return "X offset: " << m_xOffset << std::endl << "Y offset: " << 
+            m_yOffset << std::endl << "Distance variable: " << m_targetDistance
+             << std::endl << "Object = " << IsTargeting();
 }
 
 bool Limelight::IsTargeting() 

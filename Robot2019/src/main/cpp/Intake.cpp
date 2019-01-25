@@ -14,7 +14,7 @@ Intake::~Intake()
     delete intakePivot;
 }
 
-void Intake::RunWheels(bool triggerRL)
+void Intake::RunWheels(bool direction)
 {
     if(triggerRL == true)
         intakeWheels->Set(PercentOutput, WHEEL_POWER);//Spins Intake wheels in
@@ -27,7 +27,7 @@ void Intake::StopWheels()
     intakeWheels->Set(PercentOutput, 0);//stops wheels 
 }
 
-void Intake::MoveIntake(bool upOrDown)
+void Intake::MoveIntake(bool direction)
 {
     if(upOrDown == true)
        intakePivot->Set(PercentOutput, PIVOT_POWER);//Points Intake up

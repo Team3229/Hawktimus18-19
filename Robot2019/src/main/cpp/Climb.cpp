@@ -2,49 +2,50 @@
 
 #include "Climb.h"
 
-Climb::Climb()
+Climb::Climb() 
 {
-    frontLeft = new frc::Solenoid(FRONT_LEFT_ID);        
-    frontRight = new frc::Solenoid(FRONT_RIGHT_ID);       
-    backLeft = new frc::Solenoid(BACK_LEFT_ID);         
-    backRight = new frc::Solenoid(BACK_RIGHT_ID);
+    comp = new frc::Compressor(COMP_ID);
+    comp->SetClosedLoopControl(true);
+    timer.Reset();
 }
 
-Climb::~Climb()
+Climb::~Climb() 
 {
-    delete frontLeft;
-    delete frontRight;
-    delete backLeft;
-    delete backRight;
+    delete comp;
 }
 
 void Climb::MoveFront() //toggle front climb
 {
-    bool toggleDirection = true;
-    if (toggleDirection == true)
+    if (m_frontToggle == true)
     {
-        toggleDirection = false;
+        m_frontToggle = false;
         //extend
+        frontRight.Set(true);
+        frontLeft.Set(true);        
     }
     else
     {
-        toggleDirection = true;
+        m_frontToggle = true;
         //retract
+        frontRight.Set(false);
+        frontLeft.Set(false);
     }
 }
 
 void Climb::MoveBack()  //toggle back climb
 {
-    bool toggleDirection = true;
-    if (toggleDirection == true)
+    if (m_backToggle == true)
     {
-        toggleDirection = false;
+        m_backToggle = false;
         //extend
+        backRight.Set(true);
+        backLeft.Set(true);
     }
     else
     {
-        toggleDirection = true;
+        m_backToggle = true;
         //retract
+        backRight.Set(false);
+        backLeft.Set(false);
     }
-
 }

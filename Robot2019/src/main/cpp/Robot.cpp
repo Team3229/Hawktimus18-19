@@ -43,12 +43,10 @@ void Robot::AutonomousPeriodic() {
   } else {
     // Default Auto goes here
   }
+  TeleopPeriodic(); // run teleop during sandstorm period
 }
 
-void Robot::TeleopInit() 
-{
-
-}
+void Robot::TeleopInit() {}
 
 void Robot::TeleopPeriodic() 
 {
@@ -61,15 +59,17 @@ void Robot::TeleopPeriodic()
   d2_rightY = xbox2.GetY(frc::GenericHID::kRightHand);
 
   //Drive robot
+  debug(chassis.TestGyro() << std::endl);
   if(abs(d1_leftX) > DEAD_BAND || abs(d1_leftY) > DEAD_BAND || abs(d1_rightX) > DEAD_BAND)
 	{
-		chassis.Drive(d1_leftY, d1_leftX, d1_rightX);
+		chassis.Drive(d1_leftY, d1_leftX, d1_rightX); // drives robot with mecanum chassis
 	}
 	else
 	{
-		chassis.Stop();
+		chassis.Stop(); // stops driving
 	}
   
+  // speed changer
   if (xbox1.GetAButton)
     chassis.ChangeSpeed(2); // normal speed
 
@@ -78,6 +78,48 @@ void Robot::TeleopPeriodic()
 
   if (xbox1.GetXButton)
     chassis.ChangeSpeed(3); // fast
+
+  // pneumatic climb
+  if (xbox1.GetBumper(frc::GenericHID::kRightHand))
+    climber.MoveFront(); // extend/retract front climbing poles
+
+  if (xbox1.GetBumper(frc::GenericHID::kLeftHand))
+    climber.MoveBack(); // extend/retract back climbing poles
+
+  // intake operation
+  // wheels
+  if (xbox2.GetBumper(frc::GenericHID::kRightHand))
+    intake.RunWheels(true); // wheels in
+
+  if (xbox2.GetBumper(frc::GenericHID::kLeftHand))
+    intake.RunWheels(false); // wheels out
+  // pivoting the intake
+  if (abs(d2_leftY) > DEAD_BAND)
+  {
+    if (d2_leftY > 0)
+      intake.MoveIntake(true); // pivot intake up
+    else
+      intake.MoveIntake(false); // pivot intake down
+  }
+  else 
+    intake.StopIntakePivot(); // holds intake in place
+
+
+  // limelight vision
+  debug(visionSystem.TestValues() << std::endl);
+  if (xbox1.GetBackButton)
+    visionSystem.SeekTarget();
+
+  // lift operation
+  if (abs(d2_rightY) > DEAD_BAND)
+  {
+    if (d2_rightY > 0)
+      lift.MoveLift(true); // moves lift up
+    else
+      lift.MoveLift(false); // moves lift down
+  }
+  else 
+    lift.StopLift(); // holds lift in place
 
 }
 
