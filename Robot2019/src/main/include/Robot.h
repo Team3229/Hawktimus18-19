@@ -5,6 +5,8 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+// Author: Team 3229 Programming Subteam
+
 #pragma once
 
 #include <string>
@@ -52,6 +54,14 @@ class Robot : public frc::IterativeRobot {
 
   // objects of subsystems
   DriveSystem chassis{};
+
+  Limelight visionSystem{&chassis};
+
+  Lift lift{};
+
+  Intake intake{};
+
+  Climb climber{};
   
   frc::XboxController xbox1 {XBOX_USB_DRIVER_1}; //Chassis driver
   frc::XboxController xbox2 {XBOX_USB_DRIVER_2}; //Manipulation driver

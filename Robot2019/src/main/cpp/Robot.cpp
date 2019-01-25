@@ -5,6 +5,8 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+// Author: Team 3229 Programming Subteam
+
 #include "Robot.h"
 
 #include <iostream>

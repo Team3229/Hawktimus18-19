@@ -1,16 +1,14 @@
 // Author: Team 3229 Programming Subteam
 
-#include "Debug.h"
-
 #include <iostream>
 #include <memory>
 #include <Math.h>
-#include "ctre/Phoenix.h"
+#include "ctre/Phoenix.h"			//add vendor library
 #include <Drive/DifferentialDrive.h>
 #include <GenericHID.h>
 #include "WPILib.h"
 #include <WPI_TalonSRX.h>
-#include "AHRS.h"
+#include "navx/AHRS.h"				//add vendor library
 
 class DriveSystem
 {
