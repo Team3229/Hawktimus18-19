@@ -1,4 +1,8 @@
 // Author: Team 3229 Programming Subteam
+
+#ifndef CAMERA_H
+#define CAMERA_H
+
 #include <iostream>
 #include <memory>
 #include <string>
@@ -31,3 +35,4 @@ private:
 
 };
 
+#endif // CAMERA_H

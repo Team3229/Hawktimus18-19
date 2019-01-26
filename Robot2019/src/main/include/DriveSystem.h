@@ -1,5 +1,8 @@
 // Author: Team 3229 Programming Subteam
 
+#ifndef DRIVESYSTEM_H
+#define DRIVESYSTEM_H
+
 #include <iostream>
 #include <memory>
 #include <Math.h>
@@ -41,3 +44,5 @@ private:
 	const float HIGH_OUTPUT = 1.0;
 
 };
+
+#endif // DRIVESYSTEM_H

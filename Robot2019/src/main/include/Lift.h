@@ -1,5 +1,8 @@
 // Author: Team 3229 Programming Subteam
 
+#ifndef LIFT_H
+#define LIFT_H
+
 #include <iostream>
 #include "frc/WPILib.h"
 #include "ctre/Phoenix.h"
@@ -23,3 +26,5 @@ private:
     const float HOLD_POWER = 0.2;
 
 };
+
+#endif // LIFT_H

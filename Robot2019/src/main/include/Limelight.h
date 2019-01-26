@@ -1,5 +1,8 @@
 // Author: Team 3229 Programming Subteam
 
+#ifndef LIMELIGHT_H
+#define LIMELIGHT_H
+
 #include "DriveSystem.h"
 
 #include <iostream>
@@ -39,3 +42,5 @@ private:
     double m_rightAdjPow = -0.3;
 
 };
+
+#endif // LIMELIGHT_H

@@ -1,5 +1,8 @@
 // Author: Team 3229 Programming Subteam
 
+#ifndef INTAKE_H
+#define INTAKE_H
+
 #include <iostream>
 #include "frc/WPILib.h"
 #include "ctre/Phoenix.h"
@@ -28,3 +31,5 @@ private:
     const float HOLD_POWER = 0.3;
 
 };
+
+#endif // INTAKE_H

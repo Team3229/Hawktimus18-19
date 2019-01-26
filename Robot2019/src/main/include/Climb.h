@@ -1,5 +1,8 @@
 // Author: Team 3229 Programming Subteam
 
+#ifndef CLIMB_H
+#define CLIMB_H
+
 #include <iostream>
 #include "frc/WPILib.h"
 #include <frc/Timer.h>
@@ -36,3 +39,5 @@ private:
     bool m_backToggle = true;
 
 };
+
+#endif // CLIMB_H
