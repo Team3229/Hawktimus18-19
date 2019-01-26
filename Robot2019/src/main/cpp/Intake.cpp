@@ -21,9 +21,15 @@ Intake::~Intake()
 void Intake::RunWheels(bool direction)
 {
     if (direction == true)
+    {
         intakeWheels->Set(WHEEL_POWER); //Spins Intake wheels in
+        //std::cout << intakeWheels->Get() << std::endl;
+    }      
     else
+    {
         intakeWheels->Set(-WHEEL_POWER); //Spins Intake wheels out
+        //std::cout << intakeWheels->Get() << std::endl;
+    }
 }
 
 void Intake::StopWheels()
