@@ -44,6 +44,7 @@ private:
 	const float HIGH_OUTPUT = 1.0;
 
 	const float SMOOTH_TIME = 0.4;
+	const float SAFETY_TIMEOUT = 2.0;
 
 };
 

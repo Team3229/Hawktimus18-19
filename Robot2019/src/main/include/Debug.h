@@ -8,7 +8,8 @@
 #ifndef SRC_DEBUG_H_
 #define SRC_DEBUG_H_
 
-//#define USEDEBUG //Uncomment or comment to use or not use
+//This line:
+#define USE_DEBUG //Uncomment or comment to use or not use
 
 #ifdef USE_DEBUG
 #define debug(x) std::cout << x

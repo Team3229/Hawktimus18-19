@@ -13,9 +13,6 @@
 
 #include <frc/smartdashboard/SmartDashboard.h>
 
-// Comment or un-comment out the line below to disable/enable console output
-#define USE_DEBUG
-
 void Robot::RobotInit() {
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
   m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
@@ -28,14 +25,14 @@ void Robot::AutonomousInit() {
   m_autoSelected = m_chooser.GetSelected();
   // m_autoSelected = SmartDashboard::GetString(
   //     "Auto Selector", kAutoNameDefault);
-  debug("Auto selected: " << m_autoSelected << std::endl);
+  std::cout << "Auto selected: " << m_autoSelected << std::endl;
 
   if (m_autoSelected == kAutoNameCustom) {
     // Custom Auto goes here
   } else {
     // Default Auto goes here
   }
-  debug("Sandstorm starting..." << std::endl);
+  debug("Sandstorm starting...\n");
 }
 
 void Robot::AutonomousPeriodic() {
@@ -49,7 +46,7 @@ void Robot::AutonomousPeriodic() {
 
 void Robot::TeleopInit() 
 {
-  debug("TeleOp starting..." << std::endl);
+  debug("TeleOp starting...\n");
 }
 
 void Robot::TeleopPeriodic() 
@@ -63,7 +60,7 @@ void Robot::TeleopPeriodic()
   d2_rightY = xbox2.GetY(frc::GenericHID::kRightHand);
 
   //Drive robot
-  debug("Gyro angle: " << chassis.TestGyro() << std::endl);
+  debug(chassis.TestGyro());
   if(abs(d1_leftX) > DEAD_BAND || abs(d1_leftY) > DEAD_BAND || abs(d1_rightX) > DEAD_BAND)
 	{
 		chassis.Drive(d1_leftY, d1_leftX, d1_rightX); // drives robot with mecanum chassis
@@ -77,66 +74,102 @@ void Robot::TeleopPeriodic()
   if (xbox1.GetAButton())
   {
     chassis.ChangeSpeed(2); // normal speed
-    debug("Normal speed" << std::endl);
+    debug("Normal speed\n");
   }
 
   if (xbox1.GetBButton())
   {
     chassis.ChangeSpeed(1); // slow speed
-    debug("Slow speed" << std::endl);
+    debug("Slow speed\n");
   }
 
   if (xbox1.GetXButton())
   {
     chassis.ChangeSpeed(3); // fast
-    debug("Fast speed" << std::endl);
+    debug("Fast speed\n");
   }
 
   // pneumatic climb
   if (xbox1.GetBumper(frc::GenericHID::kRightHand))
+  {
     climber.MoveFront(true); // extend front climbing poles
+    debug("Extending front poles\n");
+  }
 
   if (xbox1.GetTriggerAxis(frc::GenericHID::kRightHand) > DEAD_BAND)
+  {
     climber.MoveFront(false); // retract climbing poles
+    debug("Retracting back poles\n");
+  }
 
   if (xbox1.GetBumper(frc::GenericHID::kLeftHand))
+  {
     climber.MoveBack(true); // extend back climbing poles
+    debug("Extending back poles\n");
+  }
 
   if (xbox1.GetTriggerAxis(frc::GenericHID::kLeftHand) > DEAD_BAND)
+  {
     climber.MoveBack(false); // retract back poles
+    debug("Retracting back poles\n");
+  }
 
   // intake operation
   // wheels
   if (xbox2.GetBumper(frc::GenericHID::kRightHand))
+  {
     intake.RunWheels(true); // wheels in
+    debug("Wheels in\n");
+  }
+  else
+    intake.StopWheels();
 
   if (xbox2.GetBumper(frc::GenericHID::kLeftHand))
+  {
     intake.RunWheels(false); // wheels out
-    
+    debug("Wheels out\n");
+  }
+  else 
+    intake.StopWheels();
+
   // pivoting the intake
   if (abs(d2_leftY) > DEAD_BAND)
   {
     if (d2_leftY > 0)
+    {
       intake.MoveIntake(true); // pivot intake up
+      debug("Intake up\n");
+    }
     else
+    {
       intake.MoveIntake(false); // pivot intake down
+      debug("Intake down\n");
+    }
   }
   else 
     intake.StopIntakePivot(); // holds intake in place
 
 
   // limelight vision
-  debug(visionSystem.TestValues() << std::endl);
   if (xbox1.GetBackButton())
+  {
+    visionSystem.TestValues(); // console out
     visionSystem.SeekTarget();
+  }
 
   // lift operation
   if (abs(d2_rightY) > DEAD_BAND)
   {
     if (d2_rightY > 0)
+    {
       lift.MoveLift(true); // moves lift up
+      debug("Lift up\n");
+    }
     else
+    {
       lift.MoveLift(false); // moves lift down
+      debug("Lift down\n");
+    }
   }
   else 
     lift.StopLift(); // holds lift in place

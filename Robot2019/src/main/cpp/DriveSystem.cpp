@@ -38,6 +38,7 @@ DriveSystem::DriveSystem()
 	//Sets max initial speed and turn off safety
 	driveTrain->SetMaxOutput(MAX_OUTPUT);
 	driveTrain->SetSafetyEnabled(false); 
+	driveTrain->SetExpiration(SAFETY_TIMEOUT); //Set safety timer
 
     //navX stuff
     navxGyro = new AHRS(SPI::Port::kMXP);
