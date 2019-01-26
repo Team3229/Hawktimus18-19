@@ -35,6 +35,7 @@ void Robot::AutonomousInit() {
   } else {
     // Default Auto goes here
   }
+  debug("Sandstorm starting..." << std::endl);
 }
 
 void Robot::AutonomousPeriodic() {
@@ -46,7 +47,10 @@ void Robot::AutonomousPeriodic() {
   TeleopPeriodic(); // run teleop during sandstorm period
 }
 
-void Robot::TeleopInit() {}
+void Robot::TeleopInit() 
+{
+  debug("TeleOp starting..." << std::endl);
+}
 
 void Robot::TeleopPeriodic() 
 {
@@ -71,20 +75,35 @@ void Robot::TeleopPeriodic()
   
   // speed changer
   if (xbox1.GetAButton())
+  {
     chassis.ChangeSpeed(2); // normal speed
+    debug("Normal speed" << std::endl);
+  }
 
   if (xbox1.GetBButton())
+  {
     chassis.ChangeSpeed(1); // slow speed
+    debug("Slow speed" << std::endl);
+  }
 
   if (xbox1.GetXButton())
+  {
     chassis.ChangeSpeed(3); // fast
+    debug("Fast speed" << std::endl);
+  }
 
   // pneumatic climb
   if (xbox1.GetBumper(frc::GenericHID::kRightHand))
-    climber.MoveFront(); // extend/retract front climbing poles
+    climber.MoveFront(true); // extend front climbing poles
+
+  if (xbox1.GetTriggerAxis(frc::GenericHID::kRightHand) > DEAD_BAND)
+    climber.MoveFront(false); // retract climbing poles
 
   if (xbox1.GetBumper(frc::GenericHID::kLeftHand))
-    climber.MoveBack(); // extend/retract back climbing poles
+    climber.MoveBack(true); // extend back climbing poles
+
+  if (xbox1.GetTriggerAxis(frc::GenericHID::kLeftHand) > DEAD_BAND)
+    climber.MoveBack(false); // retract back poles
 
   // intake operation
   // wheels
@@ -93,6 +112,7 @@ void Robot::TeleopPeriodic()
 
   if (xbox2.GetBumper(frc::GenericHID::kLeftHand))
     intake.RunWheels(false); // wheels out
+    
   // pivoting the intake
   if (abs(d2_leftY) > DEAD_BAND)
   {

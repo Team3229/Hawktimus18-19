@@ -12,8 +12,8 @@ class Climb
 public:
     Climb();
     ~Climb();
-    void MoveFront();
-    void MoveBack();
+    void MoveFront(bool direction);
+    void MoveBack(bool direction);
 
 private:
     // Solenoids
@@ -25,7 +25,7 @@ private:
     // Compressor(s)
     frc::Compressor * comp;
 
-    frc::Timer timer{};
+    frc::Timer timer{}; // not used
 
     // ports
     const int FRONT_LEFT_ID = 0;
@@ -34,9 +34,6 @@ private:
     const int BACK_RIGHT_ID = 3;
 
     const int COMP_ID = 0;
-
-    bool m_frontToggle = true;
-    bool m_backToggle = true;
 
 };
 

@@ -6,7 +6,6 @@ Climb::Climb()
 {
     comp = new frc::Compressor(COMP_ID);
     comp->SetClosedLoopControl(true);
-    timer.Reset();
 }
 
 Climb::~Climb() 
@@ -14,38 +13,34 @@ Climb::~Climb()
     delete comp;
 }
 
-void Climb::MoveFront() //toggle front climb
+void Climb::MoveFront(bool direction) //toggle front climb
 {
-    if (m_frontToggle == true)
+    if (direction == true)
     {
-        m_frontToggle = false;
-        //extend
+        //extend climb
         frontRight.Set(true);
-        frontLeft.Set(true);        
-    }
-    else
+        frontLeft.Set(true);
+    }        
+    else 
     {
-        m_frontToggle = true;
-        //retract
+        //retract climb
         frontRight.Set(false);
         frontLeft.Set(false);
     }
 }
 
-void Climb::MoveBack()  //toggle back climb
+void Climb::MoveBack(bool direction)  //toggle back climb
 {
-    if (m_backToggle == true)
+    if (direction == true)
     {
-        m_backToggle = false;
-        //extend
+        // extend climb
         backRight.Set(true);
-        backLeft.Set(true);
+        backLeft.Set(true);      
     }
     else
     {
-        m_backToggle = true;
-        //retract
+        // retract climb
         backRight.Set(false);
-        backLeft.Set(false);
+        backLeft.Set(false);      
     }
 }

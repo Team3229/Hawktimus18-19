@@ -29,6 +29,16 @@ DriveSystem::DriveSystem()
 	leftFollower->ClearStickyFaults(0);
 	rightFollower->ClearStickyFaults(0);
 
+	//Sets smoothing curve to talons
+	leftLead->ConfigOpenloopRamp(SMOOTH_TIME, 0); //passes in seconds from neutral to full and timeout in miliseconds
+	rightLead->ConfigOpenloopRamp(SMOOTH_TIME, 0);
+	leftFollower->ConfigOpenloopRamp(SMOOTH_TIME, 0);
+	rightFollower->ConfigOpenloopRamp(SMOOTH_TIME, 0);
+
+	//Sets max initial speed and turn off safety
+	driveTrain->SetMaxOutput(MAX_OUTPUT);
+	driveTrain->SetSafetyEnabled(false); 
+
     //navX stuff
     navxGyro = new AHRS(SPI::Port::kMXP);
 }

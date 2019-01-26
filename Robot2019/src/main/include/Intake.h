@@ -22,8 +22,8 @@ private:
     WPI_VictorSPX * intakePivot; // Motor for pivot on intake
    
     //Setting intake ports
-    const int WHEEL_PORT = 1;
-    const int PIVOT_PORT = 2;
+    const int WHEEL_PORT = 7;
+    const int PIVOT_PORT = 6;
     
     //Setting intake wheel speed
     const float WHEEL_POWER = 1.0;

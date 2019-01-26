@@ -43,6 +43,8 @@ private:
 	const float LOW_OUTPUT = 0.4;
 	const float HIGH_OUTPUT = 1.0;
 
+	const float SMOOTH_TIME = 0.4;
+
 };
 
 #endif // DRIVESYSTEM_H

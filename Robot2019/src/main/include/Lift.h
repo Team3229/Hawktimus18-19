@@ -19,7 +19,7 @@ private:
     WPI_VictorSPX * liftMotor;
 
     // port
-    const int LIFT_PORT = 3;
+    const int LIFT_PORT = 5;
 
     // power constants
     const float LIFT_POWER = 1.0;
