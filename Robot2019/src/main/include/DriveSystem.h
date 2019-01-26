@@ -18,6 +18,7 @@ public:
     DriveSystem();
     ~DriveSystem();
     void Drive(double& Y, double& X, double& Z);
+	void DriveWithoutGyro(double& Y, double& X, double& Z);
     void Stop();
     void ChangeSpeed(int choice);
     double TestGyro();

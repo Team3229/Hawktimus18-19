@@ -39,9 +39,9 @@ class Robot : public frc::TimedRobot {
 
  private:
   frc::SendableChooser<std::string> m_chooser;
-  const std::string kAutoNameDefault = "Default";
-  const std::string kAutoNameCustom = "My Auto";
-  std::string m_autoSelected;
+  const std::string kDriveNameDefault = "With Gyro";
+  const std::string kDriveNameCustom = "Without Gyro";
+  std::string m_driveSelected;
 
   // constants
   const int XBOX_USB_DRIVER_1 = 0;
@@ -50,6 +50,7 @@ class Robot : public frc::TimedRobot {
 
   // controller variable
   double d1_leftY, d1_leftX, d1_rightX, d2_leftY, d2_rightY;
+  bool m_driveWithGyro = true;
 
   // objects of subsystems
   DriveSystem chassis{};

@@ -14,33 +14,28 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 
 void Robot::RobotInit() {
-  m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
-  m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
-  frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+  m_chooser.SetDefaultOption("With Gyro (Field Oriented)", kDriveNameDefault);
+  m_chooser.AddOption("Without Gyro (Robot Oriented)", kDriveNameCustom);
+  frc::SmartDashboard::PutData("Drive Mode", &m_chooser);
 }
 
 void Robot::RobotPeriodic() {}
 
-void Robot::AutonomousInit() {
-  m_autoSelected = m_chooser.GetSelected();
-  // m_autoSelected = SmartDashboard::GetString(
-  //     "Auto Selector", kAutoNameDefault);
-  std::cout << "Auto selected: " << m_autoSelected << std::endl;
+void Robot::AutonomousInit() 
+{
+  m_driveSelected = m_chooser.GetSelected();
+  std::cout << "Drive mode selected: " << m_driveSelected << std::endl;
+  
+  if (m_driveSelected == "With Gyro")
+    m_driveWithGyro = true;
+  else 
+    m_driveWithGyro = false;
 
-  if (m_autoSelected == kAutoNameCustom) {
-    // Custom Auto goes here
-  } else {
-    // Default Auto goes here
-  }
   debug("Sandstorm starting...\n");
 }
 
-void Robot::AutonomousPeriodic() {
-  if (m_autoSelected == kAutoNameCustom) {
-    // Custom Auto goes here
-  } else {
-    // Default Auto goes here
-  }
+void Robot::AutonomousPeriodic() 
+{
   TeleopPeriodic(); // run teleop during sandstorm period
 }
 
@@ -61,14 +56,15 @@ void Robot::TeleopPeriodic()
 
   //Drive robot
   debug(chassis.TestGyro());
-  if(abs(d1_leftX) > DEAD_BAND || abs(d1_leftY) > DEAD_BAND || abs(d1_rightX) > DEAD_BAND)
+  if(abs(d1_leftX) > DEAD_BAND || abs(d1_leftY) > DEAD_BAND || abs(d1_rightX) > DEAD_BAND )
 	{
-		chassis.Drive(d1_leftY, d1_leftX, d1_rightX); // drives robot with mecanum chassis
+    if (m_driveWithGyro == true)
+		  chassis.Drive(d1_leftY, d1_leftX, d1_rightX); // drives robot with mecanum chassis
+    else
+      chassis.DriveWithoutGyro(d1_leftY, d1_leftX, d1_rightX); // drives mecanum without gyro
 	}
 	else
-	{
 		chassis.Stop(); // stops driving
-	}
   
   // speed changer
   if (xbox1.GetAButton())
