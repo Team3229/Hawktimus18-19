@@ -19,19 +19,12 @@ Lift::~Lift()
 void Lift::MoveLift(bool direction)
 {
     if (direction == true)
-    {
         liftMotor->Set(LIFT_POWER); //Lifts the lift up
-    }
     else 
-    {
         liftMotor->Set(-LIFT_POWER); //Lifts the lift down
-    }
 }
 
 void Lift::StopLift()
 {
     liftMotor->Set(HOLD_POWER); //stops lift
 }
-
-
-
