@@ -12,8 +12,8 @@ class Intake
 public:
     Intake();
     ~Intake();
-    void RunWheels(bool direction); // run intake wheels
-    void MoveIntake(bool direction); // pivot intake on motor
+    void RunWheels(bool inOrOut); // run intake wheels
+    void MoveIntake(bool upOrDown); // pivot intake on motor
     void StopWheels();
     void StopIntakePivot();
 

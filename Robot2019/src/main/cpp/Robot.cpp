@@ -39,6 +39,7 @@ void Robot::AutonomousPeriodic()
 
 void Robot::TeleopInit() 
 {
+  chassis.ResetGyro();
   debug("TeleOp starting...\n");
 }
 
@@ -53,7 +54,7 @@ void Robot::TeleopPeriodic()
   d2_rightY = xbox2.GetY(frc::GenericHID::kRightHand);
 
   //Drive robot
-  debug(chassis.TestGyro());
+  debug("Gyro angle: " << chassis.TestGyro() << "\n");
   if(abs(d1_leftX) > DEAD_BAND || abs(d1_leftY) > DEAD_BAND || abs(d1_rightX) > DEAD_BAND )
 	{
     if (m_driveWithGyro == true)

@@ -26,13 +26,6 @@ private:
 	const int FPS = 10;
 	const int BRIGHTNESS = 40;
 
-	// Constants for Pan/Tilt Servos
-	const int PAN_SERVO_PWM = 3;
-	const int TILT_SERVO_PWM = 4;
-	const float INITIAL_PAN = 0.2;
-	const float INITIAL_TILT = 0.5;
-	const float PANTILT_RATE = 0.05;
-
 };
 
 #endif // CAMERA_H

@@ -22,6 +22,7 @@ public:
     void Stop();
     void ChangeSpeed(int choice);
     double TestGyro();
+	void ResetGyro();
 
 private:
     //TalonSRX's

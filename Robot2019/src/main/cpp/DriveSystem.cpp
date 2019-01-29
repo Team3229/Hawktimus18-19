@@ -84,3 +84,8 @@ double DriveSystem::TestGyro()
 {
     return navxGyro->GetAngle();
 }
+
+void DriveSystem::ResetGyro()
+{
+	navxGyro->Reset();
+}

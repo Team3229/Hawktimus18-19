@@ -10,6 +10,10 @@ Intake::Intake()
 	intakePivot->SetSafetyEnabled(false);
     intakeWheels->ClearStickyFaults(0);
 	intakePivot->ClearStickyFaults(0); 
+
+    //victor testing
+    intakeWheels->ConfigPeakOutputForward(1);
+    intakeWheels->ConfigPeakOutputReverse(-1);
 } 
 
 Intake::~Intake()
@@ -18,33 +22,28 @@ Intake::~Intake()
     delete intakePivot;
 }
 
-void Intake::RunWheels(bool direction)
-{
-    if (direction == true)
-    {
-        intakeWheels->Set(WHEEL_POWER); //Spins Intake wheels in
-        //std::cout << intakeWheels->Get() << std::endl;
-    }      
-    else
-    {
-        intakeWheels->Set(-WHEEL_POWER); //Spins Intake wheels out
-        //std::cout << intakeWheels->Get() << std::endl;
-    }
-}
-
 void Intake::StopWheels()
 {
     intakeWheels->StopMotor(); //stops wheels 
 }
 
-void Intake::MoveIntake(bool direction)
+void Intake::MoveIntake(bool upOrDown)
 {
-    if (direction == true)
+    if (upOrDown == true)
        intakePivot->Set(PIVOT_POWER); //Points Intake up
     else
        intakePivot->Set(-PIVOT_POWER); //Points Inatake down
     
 }
+
+void Intake::RunWheels(bool inOrOut)
+{
+    if (inOrOut == true)
+        intakeWheels->Set(WHEEL_POWER); //Spin wheels in
+    else
+        intakeWheels->Set(-WHEEL_POWER); //Spin wheels out
+}
+
 void Intake::StopIntakePivot()
 {
     intakePivot->Set(HOLD_POWER);//Stops pivot
