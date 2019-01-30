@@ -68,4 +68,15 @@ class Robot : public frc::TimedRobot {
 
   Camera driveCam{};
 
+  //SmartDashobard updater
+  void GetDriveMode()
+  {
+    m_driveSelected = m_chooser.GetSelected();
+    debug("Drive mode selected: " << m_driveSelected << "\n");
+    if (m_driveSelected == "With Gyro")
+      m_driveWithGyro = true;
+    else 
+      m_driveWithGyro = false;
+  }
+
 };

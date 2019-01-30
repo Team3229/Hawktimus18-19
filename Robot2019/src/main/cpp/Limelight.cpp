@@ -38,13 +38,13 @@ void Limelight::GetValues()
 
 void Limelight::TestValues()
 {
-    std::cout << "X offset: " << m_xOffset << std::endl;
-    std::cout << "Y offset: " << m_yOffset << std::endl;
-    std::cout << "Distance variable: " << m_targetDistance << std::endl;
+    debug("X offset: " << m_xOffset << "\n");
+    debug("Y offset: " << m_yOffset << "\n");
+    debug("Distance variable: " << m_targetDistance << "\n");
     if (IsTargeting() == true)
-        std::cout << "Object found?: YES" << std::endl;
+        debug("Object found?: YES" << "\n");
     else
-        std::cout << "Object found?: NO" << std::endl; 
+        debug("Object found?: NO" << "\n"); 
 }
 
 bool Limelight::IsTargeting() 

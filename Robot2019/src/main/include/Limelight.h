@@ -4,6 +4,7 @@
 #define LIMELIGHT_H
 
 #include "DriveSystem.h"
+#include "Debug.h"
 
 #include <iostream>
 #include "frc/WPILib.h"

@@ -23,12 +23,7 @@ void Robot::RobotPeriodic() {}
 
 void Robot::AutonomousInit() 
 {
-  m_driveSelected = m_chooser.GetSelected();
-  std::cout << "Drive mode selected: " << m_driveSelected << std::endl;
-  if (m_driveSelected == "With Gyro")
-    m_driveWithGyro = true;
-  else 
-    m_driveWithGyro = false;
+  GetDriveMode(); // gets drive mode from SmartDashboard
   debug("Sandstorm starting...\n");
 }
 
@@ -45,6 +40,9 @@ void Robot::TeleopInit()
 
 void Robot::TeleopPeriodic() 
 {
+  //Update driving mode from SmartDashboard
+  GetDriveMode();
+    
   //Update controller axis values
   d1_leftY = xbox1.GetY(frc::GenericHID::kLeftHand);
   d1_leftX = xbox1.GetX(frc::GenericHID::kLeftHand);
@@ -58,15 +56,9 @@ void Robot::TeleopPeriodic()
   if(abs(d1_leftX) > DEAD_BAND || abs(d1_leftY) > DEAD_BAND || abs(d1_rightX) > DEAD_BAND )
 	{
     if (m_driveWithGyro == true)
-    {
       chassis.Drive(d1_leftY, d1_leftX, d1_rightX); // drives robot with mecanum chassis
-      debug("Driving with gyro\n");
-    }
     else
-    {
       chassis.DriveWithoutGyro(d1_leftY, d1_leftX, d1_rightX); // drives mecanum without gyro
-      debug("Driving without gyro\n");
-    }
 	}
 	else
 		chassis.Stop(); // stops driving
@@ -154,7 +146,7 @@ void Robot::TeleopPeriodic()
   // limelight vision
   if (xbox1.GetBackButton())
   {
-    visionSystem.TestValues(); // console out
+    visionSystem.TestValues(); // console out, debug handled in limelight file
     visionSystem.SeekTarget();
   }
 
