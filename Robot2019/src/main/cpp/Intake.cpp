@@ -11,9 +11,6 @@ Intake::Intake()
     intakeWheels->ClearStickyFaults(0);
 	intakePivot->ClearStickyFaults(0); 
 
-    //victor testing
-    intakeWheels->ConfigPeakOutputForward(1);
-    intakeWheels->ConfigPeakOutputReverse(-1);
 } 
 
 Intake::~Intake()
@@ -39,9 +36,9 @@ void Intake::MoveIntake(bool upOrDown)
 void Intake::RunWheels(bool inOrOut)
 {
     if (inOrOut == true)
-        intakeWheels->Set(WHEEL_POWER); //Spin wheels in
+        intakeWheels->Set(ControlMode::PercentOutput, WHEEL_POWER); //Spin wheels in
     else
-        intakeWheels->Set(-WHEEL_POWER); //Spin wheels out
+        intakeWheels->Set(ControlMode::PercentOutput, -WHEEL_POWER); //Spin wheels out
 }
 
 void Intake::StopIntakePivot()
