@@ -10,7 +10,17 @@ Climb::Climb()
 
 Climb::~Climb() 
 {
+    comp->SetClosedLoopControl(false);
     delete comp;
+}
+
+void Climb::GetCompStatus()
+{
+    bool enabled = comp->Enabled();
+    bool pressureSwitch = comp->GetPressureSwitchValue();
+    double current = comp->GetCompressorCurrent();
+    debug("Enabled: " << enabled << "\nPressure: " 
+        << pressureSwitch << "\nCurrent: " << current << "\n");
 }
 
 void Climb::MoveFront(bool direction) //toggle front climb

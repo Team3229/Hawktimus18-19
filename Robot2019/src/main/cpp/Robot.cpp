@@ -35,6 +35,7 @@ void Robot::AutonomousPeriodic()
 void Robot::TeleopInit() 
 {
   chassis.ResetGyro();
+  climber.GetCompStatus();
   debug("TeleOp starting...\n");
 }
 

@@ -3,6 +3,8 @@
 #ifndef CLIMB_H
 #define CLIMB_H
 
+#include "Debug.h"
+
 #include <iostream>
 #include "frc/WPILib.h"
 #include <frc/Timer.h>
@@ -14,6 +16,7 @@ public:
     ~Climb();
     void MoveFront(bool direction);
     void MoveBack(bool direction);
+    void GetCompStatus();
 
 private:
     // Solenoids
