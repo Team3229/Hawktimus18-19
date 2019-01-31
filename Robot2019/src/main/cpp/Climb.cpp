@@ -6,22 +6,22 @@ Climb::Climb()
 {
     comp = new frc::Compressor(COMP_ID);
     comp->SetClosedLoopControl(true);
-    comp->Start();
 }
 
 Climb::~Climb() 
 {
-    comp->Stop();
+    comp->SetClosedLoopControl(false);
     delete comp;
 }
 
-void Climb::GetCompStatus()
+void Climb::ControlComp()
 {
-    bool enabled = comp->Enabled();
-    bool pressureSwitch = comp->GetPressureSwitchValue();
-    double current = comp->GetCompressorCurrent();
-    debug("Enabled: " << enabled << "\nPressure: " 
-        << pressureSwitch << "\nCurrent: " << current << "\n");
+    m_pressureSwitch = comp->GetPressureSwitchValue();
+    debug("Enabled: " << m_pressureSwitch << "\n");
+    if (m_pressureSwitch == true)
+        comp->SetClosedLoopControl(false);
+    else 
+        comp->SetClosedLoopControl(true);
 }
 
 void Climb::MoveFront(bool direction) //toggle front climb

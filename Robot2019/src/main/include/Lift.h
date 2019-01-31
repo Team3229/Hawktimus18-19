@@ -7,6 +7,7 @@
 #include "frc/WPILib.h"
 #include "ctre/Phoenix.h"
 #include "ctre/phoenix/motorcontrol/can/VictorSPX.h"
+#include "ctre/phoenix/motorcontrol/ControlMode.h"
 
 class Lift
 {

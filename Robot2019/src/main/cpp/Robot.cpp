@@ -35,7 +35,6 @@ void Robot::AutonomousPeriodic()
 void Robot::TeleopInit() 
 {
   chassis.ResetGyro();
-  climber.GetCompStatus();
   debug("TeleOp starting...\n");
 }
 
@@ -84,6 +83,7 @@ void Robot::TeleopPeriodic()
   }
 
   // pneumatic climb
+  climber.ControlComp();
   if (xbox1.GetBumper(frc::GenericHID::kRightHand))
   {
     climber.MoveFront(true); // extend front climbing poles

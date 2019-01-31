@@ -57,12 +57,14 @@ DriveSystem::~DriveSystem()
 void DriveSystem::Drive(double& Y, double& X, double& Z)
 {
     //Drive function
-    driveTrain->DriveCartesian(-Y, X, Z, navxGyro->GetAngle()); //Optional 4th parameter for gyro input
+	Y = -Y; // invert Y
+    driveTrain->DriveCartesian(Y, X, Z, navxGyro->GetAngle()); //Optional 4th parameter for gyro input
 }
 
 void DriveSystem::DriveWithoutGyro(double& Y, double& X, double& Z)
 {
-	driveTrain->DriveCartesian(-Y, X, Z); // without gyro FOR TESTING
+	Y = -Y;
+	driveTrain->DriveCartesian(Y, X, Z); // without gyro FOR TESTING
 }
 
 void DriveSystem::Stop()

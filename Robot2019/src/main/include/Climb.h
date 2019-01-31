@@ -16,7 +16,7 @@ public:
     ~Climb();
     void MoveFront(bool direction);
     void MoveBack(bool direction);
-    void GetCompStatus();
+    void ControlComp();
 
 private:
     // Solenoids
@@ -37,6 +37,7 @@ private:
     const int BACK_RIGHT_ID = 3;
 
     const int COMP_ID = 0;
+    bool m_pressureSwitch = false;
 
 };
 
