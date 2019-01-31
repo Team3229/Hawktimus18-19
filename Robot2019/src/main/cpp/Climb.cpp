@@ -6,11 +6,12 @@ Climb::Climb()
 {
     comp = new frc::Compressor(COMP_ID);
     comp->SetClosedLoopControl(true);
+    comp->Start();
 }
 
 Climb::~Climb() 
 {
-    comp->SetClosedLoopControl(false);
+    comp->Stop();
     delete comp;
 }
 

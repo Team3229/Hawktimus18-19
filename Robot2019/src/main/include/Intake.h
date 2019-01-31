@@ -6,6 +6,7 @@
 #include <iostream>
 #include "frc/WPILib.h"
 #include "ctre/Phoenix.h"
+#include "ctre/phoenix/motorcontrol/can/VictorSPX.h"
 
 class Intake
 {
@@ -18,8 +19,8 @@ public:
     void StopIntakePivot();
 
 private:
-    WPI_VictorSPX * intakeWheels; // Motor for wheels on intake
-    WPI_VictorSPX * intakePivot; // Motor for pivot on intake
+    VictorSPX * intakeWheels; // Motor for wheels on intake
+    VictorSPX * intakePivot; // Motor for pivot on intake
    
     //Setting intake ports
     const int WHEEL_PORT = 7; // 7 or 8

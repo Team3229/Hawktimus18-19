@@ -6,10 +6,17 @@
 #include <iostream>
 #include <memory>
 #include <Math.h>
+
+//Phoenix 
 #include "ctre/Phoenix.h"			//add vendor library
-#include <frc/drive/DifferentialDrive.h>
+#include "ctre/phoenix/motorcontrol/can/TalonSRX.h" // new file WPI_TalonSRX is depricated
+
+//FRC
 #include <frc/GenericHID.h>
 #include "frc/WPILib.h"
+#include <frc/SpeedController.h>
+
+//navX
 #include "AHRS.h"				//add vendor library
 
 class DriveSystem
@@ -32,6 +39,7 @@ private:
 	WPI_TalonSRX * rightFollower; //Back right, follower
 
 	frc::MecanumDrive * driveTrain; //Drivetrain
+
     AHRS * navxGyro; //navX drive
 
     //Constants for ports and unique id

@@ -6,6 +6,7 @@
 #include <iostream>
 #include "frc/WPILib.h"
 #include "ctre/Phoenix.h"
+#include "ctre/phoenix/motorcontrol/can/VictorSPX.h"
 
 class Lift
 {
@@ -16,7 +17,7 @@ public:
     void StopLift(); //Stops lift
                                 
 private:
-    WPI_VictorSPX * liftMotor;
+    VictorSPX * liftMotor;
 
     // port
     const int LIFT_PORT = 5;

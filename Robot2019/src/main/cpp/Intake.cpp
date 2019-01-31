@@ -4,13 +4,10 @@
 
 Intake::Intake()
 {
-    intakeWheels = new WPI_VictorSPX(WHEEL_PORT); //Setting intake wheel port
-    intakePivot = new WPI_VictorSPX(PIVOT_PORT); //Setting intake pivot port
-    intakeWheels->SetSafetyEnabled(false); 
-	intakePivot->SetSafetyEnabled(false);
+    intakeWheels = new VictorSPX(WHEEL_PORT); //Setting intake wheel port
+    intakePivot = new VictorSPX(PIVOT_PORT); //Setting intake pivot port
     intakeWheels->ClearStickyFaults(0);
 	intakePivot->ClearStickyFaults(0); 
-
 } 
 
 Intake::~Intake()
@@ -21,15 +18,15 @@ Intake::~Intake()
 
 void Intake::StopWheels()
 {
-    intakeWheels->StopMotor(); //stops wheels 
+    intakeWheels->Set(ControlMode::PercentOutput, 0); //stops wheels 
 }
 
 void Intake::MoveIntake(bool upOrDown)
 {
     if (upOrDown == true)
-       intakePivot->Set(PIVOT_POWER); //Points Intake up
+       intakePivot->Set(ControlMode::PercentOutput, PIVOT_POWER); //Points Intake up
     else
-       intakePivot->Set(-PIVOT_POWER); //Points Inatake down
+       intakePivot->Set(ControlMode::PercentOutput, -PIVOT_POWER); //Points Inatake down
     
 }
 
@@ -43,5 +40,5 @@ void Intake::RunWheels(bool inOrOut)
 
 void Intake::StopIntakePivot()
 {
-    intakePivot->Set(HOLD_POWER);//Stops pivot
+    intakePivot->Set(ControlMode::PercentOutput, HOLD_POWER);//Stops pivot
 }
