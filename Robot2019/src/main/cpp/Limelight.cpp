@@ -34,10 +34,7 @@ void Limelight::GetValues()
     m_yOffset = table->GetNumber("ty",m_stillPow);
     m_targetDistance = table->GetNumber("ta",m_stillPow);
     m_validObject = table->GetNumber("tv",m_stillPow);
-}
-
-void Limelight::TestValues()
-{
+    
     debug("X offset: " << m_xOffset << "\n");
     debug("Y offset: " << m_yOffset << "\n");
     debug("Distance variable: " << m_targetDistance << "\n");
@@ -57,20 +54,18 @@ bool Limelight::IsTargeting()
 
 void Limelight::SeekTarget()
 {
-    GetValues();
     if (abs(m_xOffset) < ANGLE_RANGE)
     {
-        //chasis.Stop(); // within desired range = stop
         if (abs(m_targetDistance - DESIRED_DISTANCE) < DISTANCE_THRESH) 
             visionChassis->Stop(); // inside desired zone
         else if (m_targetDistance < DESIRED_DISTANCE)
-            visionChassis->Drive(m_leftAdjPow, m_stillPow, m_stillPow); // forward
+            visionChassis->DriveWithoutGyro(m_frdAdjPow, m_stillPow, m_stillPow); // forward
         else if (m_targetDistance > DESIRED_DISTANCE)              
-            visionChassis->Drive(m_rightAdjPow, m_stillPow, m_stillPow); // back
+            visionChassis->DriveWithoutGyro(m_bckAdjPow, m_stillPow, m_stillPow); // back
     }
     else if (m_xOffset > DESIRED_ANGLE)
-        visionChassis->Drive(m_stillPow, m_rightAdjPow, m_stillPow); // right turn
+        visionChassis->DriveWithoutGyro(m_stillPow, m_stillPow, m_rightAdjPow); // right turn
     else if (m_xOffset < DESIRED_ANGLE)
-        visionChassis->Drive(m_stillPow, m_leftAdjPow, m_stillPow); // left turn
+        visionChassis->DriveWithoutGyro(m_stillPow, m_stillPow, m_leftAdjPow); // left turn
 
 }

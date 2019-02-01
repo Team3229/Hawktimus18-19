@@ -142,9 +142,9 @@ void Robot::TeleopPeriodic()
 
 
   // limelight vision
+  visionSystem.GetValues(); // console out, debug handled in limelight file
   if (xbox1.GetYButton())
   {
-    visionSystem.TestValues(); // console out, debug handled in limelight file
     visionSystem.SeekTarget();
   }
 
