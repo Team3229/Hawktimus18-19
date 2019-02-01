@@ -87,25 +87,21 @@ void Robot::TeleopPeriodic()
   if (xbox1.GetBumper(frc::GenericHID::kRightHand))
   {
     climber.MoveFront(true); // extend front climbing poles
-    debug("Extending front poles\n");
   }
 
-  if (xbox1.GetTriggerAxis(frc::GenericHID::kRightHand) > DEAD_BAND)
+  if (abs(xbox1.GetTriggerAxis(frc::GenericHID::kRightHand)) > DEAD_BAND)
   {
     climber.MoveFront(false); // retract climbing poles
-    debug("Retracting back poles\n");
   }
 
   if (xbox1.GetBumper(frc::GenericHID::kLeftHand))
   {
     climber.MoveBack(true); // extend back climbing poles
-    debug("Extending back poles\n");
   }
 
-  if (xbox1.GetTriggerAxis(frc::GenericHID::kLeftHand) > DEAD_BAND)
+  if (abs(xbox1.GetTriggerAxis(frc::GenericHID::kLeftHand)) > DEAD_BAND)
   {
     climber.MoveBack(false); // retract back poles
-    debug("Retracting back poles\n");
   }
 
   // intake operation

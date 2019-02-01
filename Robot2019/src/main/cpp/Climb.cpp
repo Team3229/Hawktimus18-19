@@ -6,6 +6,11 @@ Climb::Climb()
 {
     comp = new frc::Compressor(COMP_ID);
     comp->SetClosedLoopControl(true);
+
+    front.ClearAllPCMStickyFaults();
+    back.ClearAllPCMStickyFaults();
+    front.Set(frc::DoubleSolenoid::Value::kOff);
+    back.Set(frc::DoubleSolenoid::Value::kOff);
 }
 
 Climb::~Climb() 
@@ -28,15 +33,15 @@ void Climb::MoveFront(bool direction) //toggle front climb
 {
     if (direction == true)
     {
-        //extend climb
-        frontRight.Set(true);
-        frontLeft.Set(true);
+        //extend front climb
+        front.Set(frc::DoubleSolenoid::Value::kForward);
+        debug("Extending front poles\n");
     }        
     else 
     {
-        //retract climb
-        frontRight.Set(false);
-        frontLeft.Set(false);
+        //retract front climb
+        front.Set(frc::DoubleSolenoid::Value::kReverse);
+        debug("Retracting front poles\n");
     }
 }
 
@@ -45,13 +50,11 @@ void Climb::MoveBack(bool direction)  //toggle back climb
     if (direction == true)
     {
         // extend climb
-        backRight.Set(true);
-        backLeft.Set(true);      
+        debug("Extending back poles\n");
     }
     else
     {
         // retract climb
-        backRight.Set(false);
-        backLeft.Set(false);      
+        debug("Retracting back poles\n");
     }
 }

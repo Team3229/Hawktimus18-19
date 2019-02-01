@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include "frc/WPILib.h"
-#include <frc/Timer.h>
+#include <frc/DoubleSolenoid.h>
 
 class Climb
 {
@@ -20,21 +20,21 @@ public:
 
 private:
     // Solenoids
-    frc::Solenoid frontLeft {FRONT_LEFT_ID};               
-    frc::Solenoid frontRight {FRONT_RIGHT_ID};
-    frc::Solenoid backLeft {BACK_LEFT_ID};
-    frc::Solenoid backRight {BACK_RIGHT_ID};
+    frc::DoubleSolenoid front {CAN_ID, FRONT_FORWARD_ID, FRONT_REVERSE_ID};
+
+    frc::DoubleSolenoid back {CAN_ID, BACK_FORWARD_ID, BACK_REVERSE_ID};
 
     // Compressor(s)
     frc::Compressor * comp;
 
-    frc::Timer timer{}; // not used
-
     // ports
-    const int FRONT_LEFT_ID = 0;
-    const int FRONT_RIGHT_ID = 1;
-    const int BACK_LEFT_ID = 2;
-    const int BACK_RIGHT_ID = 3;
+    const int FRONT_FORWARD_ID = 0;
+    const int FRONT_REVERSE_ID = 1;
+    
+    const int BACK_FORWARD_ID = 2;
+    const int BACK_REVERSE_ID = 3;
+
+    const int CAN_ID = 0;
 
     const int COMP_ID = 0;
     bool m_pressureSwitch = false;
