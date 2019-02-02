@@ -91,9 +91,9 @@ void Robot::TeleopPeriodic()
 
   // INTAKE OPERATION
   // wheels
-  if (xbox2.GetBumper(frc::GenericHID::kRightHand))
+  if (xbox2.GetBumper(frc::GenericHID::kLeftHand))
     intake.RunWheels(true); // wheels in
-  else if (xbox2.GetBumper(frc::GenericHID::kLeftHand))
+  else if (xbox2.GetBumper(frc::GenericHID::kRightHand))
     intake.RunWheels(false); // wheels out
   else 
     intake.StopWheels();
