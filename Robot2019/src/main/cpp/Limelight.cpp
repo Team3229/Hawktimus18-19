@@ -59,13 +59,13 @@ void Limelight::SeekTarget()
         if (abs(m_targetDistance - DESIRED_DISTANCE) < DISTANCE_THRESH) 
             visionChassis->Stop(); // inside desired zone
         else if (m_targetDistance < DESIRED_DISTANCE)
-            visionChassis->DriveWithoutGyro(m_frdAdjPow, m_stillPow, m_stillPow); // forward
+            visionChassis->Drive(m_frdAdjPow, m_stillPow, m_stillPow); // forward
         else if (m_targetDistance > DESIRED_DISTANCE)              
-            visionChassis->DriveWithoutGyro(m_bckAdjPow, m_stillPow, m_stillPow); // back
+            visionChassis->Drive(m_bckAdjPow, m_stillPow, m_stillPow); // back
     }
     else if (m_xOffset > DESIRED_ANGLE)
-        visionChassis->DriveWithoutGyro(m_stillPow, m_stillPow, m_rightAdjPow); // right turn
+        visionChassis->Drive(m_stillPow, m_stillPow, m_rightAdjPow); // right turn
     else if (m_xOffset < DESIRED_ANGLE)
-        visionChassis->DriveWithoutGyro(m_stillPow, m_stillPow, m_leftAdjPow); // left turn
+        visionChassis->Drive(m_stillPow, m_stillPow, m_leftAdjPow); // left turn
 
 }

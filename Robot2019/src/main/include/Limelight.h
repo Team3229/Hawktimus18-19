@@ -38,10 +38,10 @@ private:
 
     // drive powers
     double m_stillPow = 0.0;
-    double m_frdAdjPow = 0.6;
-    double m_bckAdjPow = -0.6;
-    double m_leftAdjPow = -0.6;
-    double m_rightAdjPow = 0.6;
+    double m_frdAdjPow = 1.0;
+    double m_bckAdjPow = -1.0;
+    double m_leftAdjPow = -1.0;
+    double m_rightAdjPow = 1.0;
 
 };
 
