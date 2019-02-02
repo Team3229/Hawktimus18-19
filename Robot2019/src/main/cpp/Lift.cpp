@@ -18,9 +18,15 @@ Lift::~Lift()
 void Lift::MoveLift(bool direction)
 {
     if (direction == true)
+    {
         liftMotor->Set(ControlMode::PercentOutput, LIFT_POWER); //Lifts the lift up
+        debug("Lift up\n");
+    }
     else 
+    {
         liftMotor->Set(ControlMode::PercentOutput, -LIFT_POWER); //Lifts the lift down
+        debug("Lift down\n");
+    }
 }
 
 void Lift::StopLift()

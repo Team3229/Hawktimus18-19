@@ -3,6 +3,8 @@
 #ifndef INTAKE_H
 #define INTAKE_H
 
+#include "Debug.h"
+
 #include <iostream>
 #include "frc/WPILib.h"
 #include "ctre/Phoenix.h"

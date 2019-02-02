@@ -75,11 +75,20 @@ void DriveSystem::Stop()
 void DriveSystem::ChangeSpeed(int choice)
 {
     if (choice == 1)
+	{
         driveTrain->SetMaxOutput(LOW_OUTPUT);
+    	debug("Slow speed\n");
+	}
     else if (choice == 2)
+	{
         driveTrain->SetMaxOutput(MAX_OUTPUT);
+    	debug("Normal speed\n");
+	}
     else if (choice == 3)
+	{
         driveTrain->SetMaxOutput(HIGH_OUTPUT);
+    	debug("Fast speed\n");
+	}
 }
 
 double DriveSystem::TestGyro()

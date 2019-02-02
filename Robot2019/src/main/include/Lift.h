@@ -3,6 +3,8 @@
 #ifndef LIFT_H
 #define LIFT_H
 
+#include "Debug.h"
+
 #include <iostream>
 #include "frc/WPILib.h"
 #include "ctre/Phoenix.h"

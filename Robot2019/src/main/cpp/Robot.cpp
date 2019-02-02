@@ -65,57 +65,34 @@ void Robot::TeleopPeriodic()
   
   // speed changer
   if (xbox1.GetAButton())
-  {
     chassis.ChangeSpeed(2); // normal speed
-    debug("Normal speed\n");
-  }
 
   if (xbox1.GetBButton())
-  {
     chassis.ChangeSpeed(1); // slow speed
-    debug("Slow speed\n");
-  }
 
   if (xbox1.GetXButton())
-  {
     chassis.ChangeSpeed(3); // fast
-    debug("Fast speed\n");
-  }
 
   // pneumatic climb
   climber.ControlComp();
   if (xbox1.GetBumper(frc::GenericHID::kRightHand))
-  {
     climber.MoveFront(true); // extend front climbing poles
-  }
 
   if (abs(xbox1.GetTriggerAxis(frc::GenericHID::kRightHand)) > DEAD_BAND)
-  {
     climber.MoveFront(false); // retract climbing poles
-  }
 
   if (xbox1.GetBumper(frc::GenericHID::kLeftHand))
-  {
     climber.MoveBack(true); // extend back climbing poles
-  }
 
   if (abs(xbox1.GetTriggerAxis(frc::GenericHID::kLeftHand)) > DEAD_BAND)
-  {
     climber.MoveBack(false); // retract back poles
-  }
 
   // intake operation
   // wheels
   if (xbox2.GetBumper(frc::GenericHID::kRightHand))
-  {
     intake.RunWheels(true); // wheels in
-    debug("Wheels in\n");
-  }
   else if (xbox2.GetBumper(frc::GenericHID::kLeftHand))
-  {
     intake.RunWheels(false); // wheels out
-    debug("Wheels out\n");
-  }
   else 
     intake.StopWheels();
 
@@ -123,15 +100,9 @@ void Robot::TeleopPeriodic()
   if (abs(d2_leftY) > DEAD_BAND)
   {
     if (d2_leftY > 0)
-    {
       intake.MoveIntake(true); // pivot intake up
-      debug("Intake up\n");
-    }
     else
-    {
       intake.MoveIntake(false); // pivot intake down
-      debug("Intake down\n");
-    }
   }
   else 
     intake.StopIntakePivot(); // holds intake in place
@@ -140,23 +111,15 @@ void Robot::TeleopPeriodic()
   // limelight vision
   visionSystem.GetValues(); // console out, debug handled in limelight file
   if (xbox1.GetYButton())
-  {
     visionSystem.SeekTarget();
-  }
 
   // lift operation
   if (abs(d2_rightY) > DEAD_BAND)
   {
     if (d2_rightY > 0)
-    {
       lift.MoveLift(true); // moves lift up
-      debug("Lift up\n");
-    }
     else
-    {
       lift.MoveLift(false); // moves lift down
-      debug("Lift down\n");
-    }
   }
   else 
     lift.StopLift(); // holds lift in place

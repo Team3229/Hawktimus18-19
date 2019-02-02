@@ -6,6 +6,7 @@
 #include <iostream>
 #include <memory>
 #include <Math.h>
+#include "Debug.h"
 
 //Phoenix 
 #include "ctre/Phoenix.h"			//add vendor library
