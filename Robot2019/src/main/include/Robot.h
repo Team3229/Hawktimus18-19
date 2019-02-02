@@ -14,11 +14,11 @@
 #include <frc/TimedRobot.h>
 #include <frc/smartdashboard/SendableChooser.h>
 
-// our needed includes
+// Our needed includes
 #include <frc/XboxController.h>
 #include <Math.h>
 
-// subsystem includes
+// Subsystem includes
 #include "DriveSystem.h"
 #include "Camera.h"
 #include "Limelight.h"
@@ -38,21 +38,22 @@ class Robot : public frc::TimedRobot {
   void TestPeriodic() override;
 
  private:
+  // SmartDashboard setup
   frc::SendableChooser<std::string> m_chooser;
   const std::string kDriveNameDefault = "With Gyro";
   const std::string kDriveNameCustom = "Without Gyro";
   std::string m_driveSelected;
 
-  // constants
+  // Constants
   const int XBOX_USB_DRIVER_1 = 0;
   const int XBOX_USB_DRIVER_2 = 1;
   const float DEAD_BAND = 0.1;
 
-  // controller variable
+  // Controller variables
   double d1_leftY, d1_leftX, d1_rightX, d2_leftY, d2_rightY;
   bool m_driveWithGyro = true;
 
-  // objects of subsystems
+  // Objects of subsystems
   DriveSystem chassis{};
 
   Limelight visionSystem{&chassis};
@@ -68,7 +69,7 @@ class Robot : public frc::TimedRobot {
 
   Camera driveCam{};
 
-  //SmartDashobard updater
+  // SmartDashobard updater
   void GetDriveMode()
   {
     m_driveSelected = m_chooser.GetSelected();
@@ -78,5 +79,4 @@ class Robot : public frc::TimedRobot {
     else 
       m_driveWithGyro = false;
   }
-
 };

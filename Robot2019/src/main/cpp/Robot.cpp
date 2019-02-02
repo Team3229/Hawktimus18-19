@@ -13,7 +13,8 @@
 
 #include <frc/smartdashboard/SmartDashboard.h>
 
-void Robot::RobotInit() {
+void Robot::RobotInit() 
+{
   m_chooser.SetDefaultOption("With Gyro (Field Oriented)", kDriveNameDefault);
   m_chooser.AddOption("Without Gyro (Robot Oriented)", kDriveNameCustom);
   frc::SmartDashboard::PutData("Drive Mode", &m_chooser);
@@ -23,6 +24,7 @@ void Robot::RobotPeriodic() {}
 
 void Robot::AutonomousInit() 
 {
+  chassis.ResetGyro();
   GetDriveMode(); // gets drive mode from SmartDashboard
   debug("Sandstorm starting...\n");
 }
@@ -51,12 +53,12 @@ void Robot::TeleopPeriodic()
   d2_leftY = xbox2.GetY(frc::GenericHID::kLeftHand);
   d2_rightY = xbox2.GetY(frc::GenericHID::kRightHand);
 
-  //Drive robot
+  // DRIVE
   debug("Gyro angle: " << chassis.TestGyro() << "\n");
   if(abs(d1_leftX) > DEAD_BAND || abs(d1_leftY) > DEAD_BAND || abs(d1_rightX) > DEAD_BAND )
 	{
     if (m_driveWithGyro == true)
-      chassis.Drive(d1_leftY, d1_leftX, d1_rightX); // drives robot with mecanum chassis
+      chassis.Drive(d1_leftY, d1_leftX, d1_rightX); // drives robot with mecanum chassis + gyro
     else
       chassis.DriveWithoutGyro(d1_leftY, d1_leftX, d1_rightX); // drives mecanum without gyro
 	}
@@ -73,21 +75,21 @@ void Robot::TeleopPeriodic()
   if (xbox1.GetXButton())
     chassis.ChangeSpeed(3); // fast
 
-  // pneumatic climb
+  // PNEUMATIC CLIMB
   climber.ControlComp();
   if (xbox1.GetBumper(frc::GenericHID::kRightHand))
     climber.MoveFront(true); // extend front climbing poles
 
   if (abs(xbox1.GetTriggerAxis(frc::GenericHID::kRightHand)) > DEAD_BAND)
-    climber.MoveFront(false); // retract climbing poles
+    climber.MoveFront(false); // retract front climbing poles
 
   if (xbox1.GetBumper(frc::GenericHID::kLeftHand))
     climber.MoveBack(true); // extend back climbing poles
 
   if (abs(xbox1.GetTriggerAxis(frc::GenericHID::kLeftHand)) > DEAD_BAND)
-    climber.MoveBack(false); // retract back poles
+    climber.MoveBack(false); // retract back climbing poles
 
-  // intake operation
+  // INTAKE OPERATION
   // wheels
   if (xbox2.GetBumper(frc::GenericHID::kRightHand))
     intake.RunWheels(true); // wheels in
@@ -108,12 +110,13 @@ void Robot::TeleopPeriodic()
     intake.StopIntakePivot(); // holds intake in place
 
 
-  // limelight vision
-  visionSystem.GetValues(); // console out, debug handled in limelight file
+  // LIMELIGHT VISION TRACKING
+  // robot will stop moving when target is in desired range/orientation
+  visionSystem.GetValues();
   if (xbox1.GetYButton())
-    visionSystem.SeekTarget();
+    visionSystem.SeekTarget(); 
 
-  // lift operation
+  // LIFT OPERATION
   if (abs(d2_rightY) > DEAD_BAND)
   {
     if (d2_rightY > 0)

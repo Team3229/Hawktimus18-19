@@ -2,18 +2,19 @@
 
 #include "Limelight.h"
 
-// connect to limelight.local:5801
+// Connect to 10.32.29.11:5801 for control panel
+// Connect to 10.32.29.11:5800 for direct camera output
 
 Limelight::Limelight(DriveSystem * chassis)
 {
-    // pasted from documentation
+    // Pasted from documentation
     std::shared_ptr<NetworkTable> table = nt::NetworkTableInstance::GetDefault().GetTable("limelight");
     double targetOffsetAngle_Horizontal = table->GetNumber("tx",m_stillPow);
     double targetOffsetAngle_Vertical = table->GetNumber("ty",m_stillPow);
     double targetArea = table->GetNumber("ta",m_stillPow);
     double targetSkew = table->GetNumber("ts",m_stillPow);
 
-    //set constants
+    // Set constants
     nt::NetworkTableInstance::GetDefault().GetTable("limelight")->PutNumber("pipeline", 0);
     nt::NetworkTableInstance::GetDefault().GetTable("limelight")->PutNumber("ledMode", 3);
     nt::NetworkTableInstance::GetDefault().GetTable("limelight")->PutNumber("camMode", 0);
