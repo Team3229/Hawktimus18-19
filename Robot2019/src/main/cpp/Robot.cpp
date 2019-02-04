@@ -78,16 +78,11 @@ void Robot::TeleopPeriodic()
   // PNEUMATIC CLIMB
   climber.ControlComp();
   if (xbox1.GetBumper(frc::GenericHID::kRightHand))
-    climber.MoveFront(true); // extend front climbing poles
-
-  if (abs(xbox1.GetTriggerAxis(frc::GenericHID::kRightHand)) > DEAD_BAND)
-    climber.MoveFront(false); // retract front climbing poles
+    climber.MoveFront(); // toggle front climbing poles
 
   if (xbox1.GetBumper(frc::GenericHID::kLeftHand))
-    climber.MoveBack(true); // extend back climbing poles
+    climber.MoveBack(); // toggle back climbing poles
 
-  if (abs(xbox1.GetTriggerAxis(frc::GenericHID::kLeftHand)) > DEAD_BAND)
-    climber.MoveBack(false); // retract back climbing poles
 
   // INTAKE OPERATION
   // wheels

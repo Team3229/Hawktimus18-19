@@ -14,8 +14,8 @@ class Climb
 public:
     Climb();
     ~Climb();
-    void MoveFront(bool direction);
-    void MoveBack(bool direction);
+    void MoveFront();
+    void MoveBack();
     void ControlComp();
 
 private:
@@ -33,6 +33,9 @@ private:
     
     const int BACK_FORWARD_ID = 2;
     const int BACK_REVERSE_ID = 3;
+
+    bool m_frontToggle = true;
+    bool m_backToggle = true;
 
     const int COMP_ID = 0;
     bool m_pressureSwitch = false;

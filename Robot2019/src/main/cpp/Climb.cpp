@@ -34,36 +34,42 @@ void Climb::ControlComp()
         comp->SetClosedLoopControl(true);
 }
 
-void Climb::MoveFront(bool direction) //toggle front climb
+void Climb::MoveFront() //toggle front climb
 {
-    if (direction == true)
+    if (m_frontToggle == true)
     {
         //extend front climb
         front->Set(frc::DoubleSolenoid::Value::kForward);
         debug("Extending front poles\n");
+        m_frontToggle = false;
     }        
     else 
     {
         //retract front climb
         front->Set(frc::DoubleSolenoid::Value::kReverse);
         debug("Retracting front poles\n");
+        m_frontToggle = true;
     }
     debug("Front solenoid value: " << front->Get() << "\n");
+    frc::Wait(0.5);
 }
 
-void Climb::MoveBack(bool direction)  //toggle back climb
+void Climb::MoveBack()  //toggle back climb
 {
-    if (direction == true)
+    if (m_backToggle == true)
     {
         // extend climb
         back->Set(frc::DoubleSolenoid::Value::kForward);
         debug("Extending back poles\n");
+        m_backToggle = false;
     }
     else
     {
         // retract climb
         back->Set(frc::DoubleSolenoid::Value::kReverse);
         debug("Retracting back poles\n");
+        m_backToggle = true;
     }
     debug("Back solenoid value: " << back->Get() << "\n");
+    frc::Wait(0.5);
 }
