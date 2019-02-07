@@ -20,21 +20,18 @@ Lift::~Lift()
 
 void Lift::MoveLift(bool direction)
 {
-    if (limitSwitch.Get() == false) // Limit switch not pressed in
+    if (direction == true && limitSwitch.Get() == false)
     {
-        if (direction == true)
-        {
-            liftMotor->Set(ControlMode::PercentOutput, LIFT_POWER); //Lifts the lift up
-            debug("Lift up\n");
-        }
-        else 
-        {
-            liftMotor->Set(ControlMode::PercentOutput, -LIFT_POWER); //Moves the lift down
-            debug("Lift down\n");
-        }
+        liftMotor->Set(ControlMode::PercentOutput, LIFT_POWER); //Lifts the lift up
+        debug("Lift up\n");
+    }
+    else if (direction == false)
+    {
+        liftMotor->Set(ControlMode::PercentOutput, -LIFT_POWER); //Moves the lift down
+        debug("Lift down\n");
     }
     else
-        StopLift(); // Limit switch pressed, max height reached
+        StopLift();
 }
 
 void Lift::StopLift()
