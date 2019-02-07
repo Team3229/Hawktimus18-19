@@ -40,7 +40,7 @@ void Robot::TeleopInit()
   debug("TeleOp starting...\n");
 }
 
-void Robot::TeleopPeriodic() 
+void Robot::TeleopPeriodic()
 {
   //Update driving mode from SmartDashboard
   GetDriveMode();
