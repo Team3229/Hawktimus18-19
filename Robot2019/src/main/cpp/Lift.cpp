@@ -20,12 +20,12 @@ Lift::~Lift()
 
 void Lift::MoveLift(bool direction)
 {
-    if (direction == true && limitSwitch.Get() == false)
+    if (direction == true && topSwitch.Get() == false)
     {
         liftMotor->Set(ControlMode::PercentOutput, LIFT_POWER); //Lifts the lift up
         debug("Lift up\n");
     }
-    else if (direction == false)
+    else if (direction == false && bottomSwitch.Get() == false)
     {
         liftMotor->Set(ControlMode::PercentOutput, -LIFT_POWER); //Moves the lift down
         debug("Lift down\n");

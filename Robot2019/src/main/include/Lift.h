@@ -22,15 +22,17 @@ public:
                                 
 private:
     VictorSPX * liftMotor;
-    frc::DigitalInput limitSwitch {SWITCH_DIO_PORT};
+    frc::DigitalInput topSwitch {TOP_DIO};
+    frc::DigitalInput bottomSwitch {BOTTOM_DIO};
 
     // port
     const int LIFT_PORT = 5;
-    const int SWITCH_DIO_PORT = 0;
+    const int TOP_DIO = 0;
+    const int BOTTOM_DIO = 1;
 
     // power constants
-    const float LIFT_POWER = 1.0;
-    const float HOLD_POWER = 0.3;
+    const float LIFT_POWER = 0.8;
+    const float HOLD_POWER = 0.1;
 
     const int DESIRED_POSITION = 1;
 
