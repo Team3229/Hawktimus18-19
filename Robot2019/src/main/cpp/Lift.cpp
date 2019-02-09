@@ -9,6 +9,9 @@ Lift::Lift()
     liftMotor = new VictorSPX(LIFT_PORT);
     liftMotor->ClearStickyFaults(0);
 
+    topSwitch = new frc::DigitalInput(TOP_DIO);
+    bottomSwitch = new frc::DigitalInput(BOTTOM_DIO);
+
     // moving to desired location test
     liftMotor->SetSelectedSensorPosition(0, 0, 0);
 }
@@ -16,16 +19,20 @@ Lift::Lift()
 Lift::~Lift()
 {
     delete liftMotor;
+    delete topSwitch;
+    delete bottomSwitch;
 }
 
 void Lift::MoveLift(bool direction)
 {
-    if (direction == true && topSwitch.Get() == false)
+    debug("Top switch status: " << topSwitch->Get() << "\n");
+    debug("Bottom switch status: " << bottomSwitch->Get() << "\n");
+    if (direction == true && topSwitch->Get() == false)
     {
         liftMotor->Set(ControlMode::PercentOutput, LIFT_POWER); //Lifts the lift up
         debug("Lift up\n");
     }
-    else if (direction == false && bottomSwitch.Get() == false)
+    else if (direction == false && bottomSwitch->Get() == false)
     {
         liftMotor->Set(ControlMode::PercentOutput, -LIFT_POWER); //Moves the lift down
         debug("Lift down\n");

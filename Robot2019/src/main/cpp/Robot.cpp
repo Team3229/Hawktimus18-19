@@ -114,7 +114,7 @@ void Robot::TeleopPeriodic()
   // LIFT OPERATION
   if (abs(d2_rightY) > DEAD_BAND)
   {
-    if (d2_rightY > 0)
+    if (d2_rightY < 0)
       lift.MoveLift(true); // moves lift up
     else
       lift.MoveLift(false); // moves lift down

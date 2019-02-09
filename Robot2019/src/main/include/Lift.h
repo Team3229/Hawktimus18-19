@@ -22,8 +22,8 @@ public:
                                 
 private:
     VictorSPX * liftMotor;
-    frc::DigitalInput topSwitch {TOP_DIO};
-    frc::DigitalInput bottomSwitch {BOTTOM_DIO};
+    frc::DigitalInput * topSwitch;
+    frc::DigitalInput * bottomSwitch;
 
     // port
     const int LIFT_PORT = 5;
