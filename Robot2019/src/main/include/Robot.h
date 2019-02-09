@@ -24,7 +24,7 @@
 #include "Limelight.h"
 #include "Lift.h"
 #include "Intake.h"
-#include "Climb.h"
+#include "Pneumatics.h"
 #include "Debug.h"
 
 class Robot : public frc::TimedRobot {
@@ -62,7 +62,7 @@ class Robot : public frc::TimedRobot {
 
   Intake intake{};
 
-  Climb climber{};
+  Pneumatics air{};
   
   frc::XboxController xbox1 {XBOX_USB_DRIVER_1}; //Chassis driver
   frc::XboxController xbox2 {XBOX_USB_DRIVER_2}; //Manipulation driver

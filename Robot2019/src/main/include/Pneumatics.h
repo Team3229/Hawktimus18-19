@@ -1,7 +1,7 @@
 // Author: Team 3229 Programming Subteam
 
-#ifndef CLIMB_H
-#define CLIMB_H
+#ifndef PNEUMATICS_H
+#define PNEUMATICS_H
 
 #include "Debug.h"
 
@@ -9,20 +9,21 @@
 #include "frc/WPILib.h"
 #include <frc/DoubleSolenoid.h>
 
-class Climb
+class Pneumatics
 {
 public:
-    Climb();
-    ~Climb();
-    void MoveFront();
-    void MoveBack();
+    Pneumatics();
+    ~Pneumatics();
+    void MoveFrontClimb();
+    void MoveBackClimb();
     void ControlComp();
+    void EjectBackPanel();
 
 private:
     // Solenoids
-    frc::DoubleSolenoid * front;
-
-    frc::DoubleSolenoid * back;
+    frc::DoubleSolenoid * frontClimb;
+    frc::DoubleSolenoid * backClimb;
+    frc::Solenoid * ejector;
 
     // Compressor(s)
     frc::Compressor * comp;
@@ -34,6 +35,8 @@ private:
     const int BACK_FORWARD_ID = 2;
     const int BACK_REVERSE_ID = 3;
 
+    const int EJECTOR_ID = 4;
+
     bool m_frontToggle = true;
     bool m_backToggle = true;
 
@@ -42,4 +45,4 @@ private:
 
 };
 
-#endif // CLIMB_H
+#endif // PNEUMATICS_H

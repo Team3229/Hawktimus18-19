@@ -75,13 +75,18 @@ void Robot::TeleopPeriodic()
   if (xbox1.GetXButton())
     chassis.ChangeSpeed(3); // fast
 
-  // PNEUMATIC CLIMB
-  climber.ControlComp();
+  // PNEUMATICS
+  // climber
+  air.ControlComp();
   if (xbox1.GetBumper(frc::GenericHID::kRightHand))
-    climber.MoveFront(); // toggle front climbing poles
+    air.MoveFrontClimb(); // toggle front climbing poles
 
   if (xbox1.GetBumper(frc::GenericHID::kLeftHand))
-    climber.MoveBack(); // toggle back climbing poles
+    air.MoveBackClimb(); // toggle back climbing poles
+
+  // ejector
+  if (xbox2.GetAButton())
+    air.EjectBackPanel(); // Ejects panel from back, 1 time use
 
 
   // INTAKE OPERATION
