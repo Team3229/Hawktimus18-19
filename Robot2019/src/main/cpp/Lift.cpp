@@ -27,14 +27,14 @@ void Lift::MoveLift(bool direction)
 {
     debug("Top switch status: " << topSwitch->Get() << "\n");
     debug("Bottom switch status: " << bottomSwitch->Get() << "\n");
-    if (direction == true && topSwitch->Get() == false)
+    if (direction == true) //&& topSwitch->Get() == false)
     {
         liftMotor->Set(ControlMode::PercentOutput, LIFT_POWER); //Lifts the lift up
         debug("Lift up\n");
     }
-    else if (direction == false && bottomSwitch->Get() == false)
+    else if (direction == false) //&& bottomSwitch->Get() == false)
     {
-        liftMotor->Set(ControlMode::PercentOutput, -LIFT_POWER); //Moves the lift down
+        liftMotor->Set(ControlMode::PercentOutput, DOWN_POWER); //Moves the lift down
         debug("Lift down\n");
     }
     else
