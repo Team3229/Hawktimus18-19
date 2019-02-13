@@ -32,7 +32,8 @@ private:
     //Setting intake wheel speed
     const float WHEEL_POWER = 1.0;
     const float PIVOT_POWER = 0.2;
-    const float HOLD_POWER = -0.1;
+    const float PIVOT_HOLD_POWER = -0.1; 
+    const float WHEEL_HOLD_POWER = 0.1;
 
 };
 

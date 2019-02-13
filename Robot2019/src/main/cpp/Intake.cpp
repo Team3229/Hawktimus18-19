@@ -18,7 +18,7 @@ Intake::~Intake()
 
 void Intake::StopWheels()
 {
-    intakeWheels->Set(ControlMode::PercentOutput, 0); //stops wheels 
+    intakeWheels->Set(ControlMode::PercentOutput, WHEEL_HOLD_POWER); //holds cargo by running wheels
 }
 
 void Intake::MoveIntake(bool upOrDown)
@@ -51,5 +51,5 @@ void Intake::RunWheels(bool inOrOut)
 
 void Intake::StopIntakePivot()
 {
-    intakePivot->Set(ControlMode::PercentOutput, HOLD_POWER);//Stops pivot
+    intakePivot->Set(ControlMode::PercentOutput, PIVOT_HOLD_POWER);//holds intake pivot in place 
 }
