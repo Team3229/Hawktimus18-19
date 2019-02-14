@@ -30,7 +30,7 @@ void Intake::MoveIntake(bool upOrDown)
     }
     else
     {
-        intakePivot->Set(ControlMode::PercentOutput, -PIVOT_POWER); //Points Inatake down
+        intakePivot->Set(ControlMode::PercentOutput, PIVOT_DOWN_POWER); //Points Inatake down
         debug("Intake down\n");
     }
 }

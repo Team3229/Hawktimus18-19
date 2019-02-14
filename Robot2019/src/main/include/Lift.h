@@ -32,6 +32,7 @@ private:
 
     // power constants
     const float LIFT_POWER = 0.8;
+    const float SMOOTH_TIME = 0.25;
     const float DOWN_POWER = -0.4;
     const float HOLD_POWER = 0.1;
 

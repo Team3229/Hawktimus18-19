@@ -68,15 +68,14 @@ class Robot : public frc::TimedRobot {
   frc::XboxController xbox2 {XBOX_USB_DRIVER_2}; //Manipulation driver
 
   Camera driveCam{};
-
-  // SmartDashobard updater
-  void GetDriveMode()
+  
+  //Toggle robot/field orient
+  void SwitchDriveMode()
   {
-    m_driveSelected = m_chooser.GetSelected();
-    debug("Drive mode selected: " << m_driveSelected << "\n");
-    if (m_driveSelected == "With Gyro")
-      m_driveWithGyro = true;
-    else 
+    debug("Drive mode switched...\n");
+    if (m_driveWithGyro == true)
       m_driveWithGyro = false;
+    else 
+      m_driveWithGyro = true;
   }
 };

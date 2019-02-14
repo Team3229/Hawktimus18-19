@@ -8,12 +8,10 @@ Lift::Lift()
 {
     liftMotor = new VictorSPX(LIFT_PORT);
     liftMotor->ClearStickyFaults(0);
+    liftMotor->ConfigOpenloopRamp(SMOOTH_TIME, 0);
 
     topSwitch = new frc::DigitalInput(TOP_DIO);
     bottomSwitch = new frc::DigitalInput(BOTTOM_DIO);
-
-    // moving to desired location test
-    liftMotor->SetSelectedSensorPosition(0, 0, 0);
 }
 
 Lift::~Lift()

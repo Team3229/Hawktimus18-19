@@ -25,7 +25,6 @@ void Robot::RobotPeriodic() {}
 void Robot::AutonomousInit() 
 {
   chassis.ResetGyro();
-  GetDriveMode(); // gets drive mode from SmartDashboard
   debug("Sandstorm starting...\n");
 }
 
@@ -41,10 +40,7 @@ void Robot::TeleopInit()
 }
 
 void Robot::TeleopPeriodic()
-{
-  //Update driving mode from SmartDashboard
-  GetDriveMode();
-    
+{    
   //Update controller axis values
   d1_leftY = xbox1.GetY(frc::GenericHID::kLeftHand);
   d1_leftX = xbox1.GetX(frc::GenericHID::kLeftHand);
@@ -65,6 +61,13 @@ void Robot::TeleopPeriodic()
 	else
 		chassis.Stop(); // stops driving
   
+  // swap robot and field orient with button
+  if (xbox1.GetStartButton())
+  {
+    SwitchDriveMode();
+    frc::Wait(0.5);
+  }
+
   // speed changer
   if (xbox1.GetAButton())
     chassis.ChangeSpeed(2); // normal speed
@@ -101,7 +104,7 @@ void Robot::TeleopPeriodic()
   // pivoting the intake
   if (abs(d2_leftY) > DEAD_BAND)
   {
-    if (d2_leftY > 0)
+    if (d2_leftY < 0)
       intake.MoveIntake(true); // pivot intake up
     else
       intake.MoveIntake(false); // pivot intake down
