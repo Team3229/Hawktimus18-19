@@ -18,12 +18,11 @@ public:
     ~Lift();
     void MoveLift(bool direction); //Moves lift up and down
     void StopLift(); //Stops lift
-    void SetLiftPosition();
                                 
 private:
     VictorSPX * liftMotor;
-    frc::DigitalInput * topSwitch;
-    frc::DigitalInput * bottomSwitch;
+    //frc::DigitalInput * topSwitch;
+    //frc::DigitalInput * bottomSwitch;
 
     // port
     const int LIFT_PORT = 5;
@@ -35,8 +34,6 @@ private:
     const float SMOOTH_TIME = 0.25;
     const float DOWN_POWER = -0.5;
     const float HOLD_POWER = 0.1;
-
-    const int DESIRED_POSITION = 1;
 
 };
 

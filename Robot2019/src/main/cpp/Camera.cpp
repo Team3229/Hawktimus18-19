@@ -8,7 +8,7 @@ Camera::Camera()
 {
 	//Make resolution low to reduce bandwidth and rio cpu %
 	cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
-	camera.SetResolution(640, 480); // length x height
+	camera.SetResolution(1280, 720); // length x height
 	camera.SetFPS(FPS);
 	camera.SetWhiteBalanceAuto();
 	camera.SetExposureAuto();
