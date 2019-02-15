@@ -31,7 +31,7 @@ Pneumatics::~Pneumatics()
 void Pneumatics::ControlComp()
 {
     m_pressureSwitch = comp->GetPressureSwitchValue();
-    debug("Enabled: " << m_pressureSwitch << "\n");
+    debug("Pressure switch state: " << m_pressureSwitch << "\n");
     if (m_pressureSwitch == true)
         comp->SetClosedLoopControl(false);
     else 

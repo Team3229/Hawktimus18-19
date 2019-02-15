@@ -52,6 +52,7 @@ class Robot : public frc::TimedRobot {
   // Controller variables
   double d1_leftY, d1_leftX, d1_rightX, d2_leftY, d2_rightY;
   bool m_driveWithGyro = true;
+  bool m_usingVision = false;
 
   // Objects of subsystems
   DriveSystem chassis{};

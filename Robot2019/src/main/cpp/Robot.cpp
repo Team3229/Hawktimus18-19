@@ -15,9 +15,11 @@
 
 void Robot::RobotInit() 
 {
+  /*
   m_chooser.SetDefaultOption("With Gyro (Field Oriented)", kDriveNameDefault);
   m_chooser.AddOption("Without Gyro (Robot Oriented)", kDriveNameCustom);
   frc::SmartDashboard::PutData("Drive Mode", &m_chooser);
+  */
 }
 
 void Robot::RobotPeriodic() {}
@@ -35,6 +37,7 @@ void Robot::AutonomousPeriodic()
 
 void Robot::TeleopInit() 
 {
+  //Needs to be removed before comp:
   chassis.ResetGyro();
   debug("TeleOp starting...\n");
 }
@@ -59,10 +62,13 @@ void Robot::TeleopPeriodic()
       chassis.DriveWithoutGyro(d1_leftY, d1_leftX, d1_rightX); // drives mecanum without gyro
 	}
 	else
-		chassis.Stop(); // stops driving
+  {
+    if (m_usingVision == false)
+      chassis.Stop(); // stops driving
+  }
   
   // swap robot and field orient with button
-  if (xbox1.GetStartButton())
+  if (xbox1.GetTriggerAxis(frc::GenericHID::kRightHand) > DEAD_BAND)
   {
     SwitchDriveMode();
     frc::Wait(0.5);
@@ -94,9 +100,17 @@ void Robot::TeleopPeriodic()
 
   // INTAKE OPERATION
   // wheels
+  /*
   if (xbox2.GetBumper(frc::GenericHID::kLeftHand))
     intake.RunWheels(true); // wheels in
   else if (xbox2.GetBumper(frc::GenericHID::kRightHand))
+    intake.RunWheels(false); // wheels out
+  else 
+    intake.StopWheels();
+  */
+  if (xbox2.GetTriggerAxis(frc::GenericHID::kLeftHand) > DEAD_BAND)
+    intake.RunWheels(true); // wheels in
+  else if (xbox2.GetTriggerAxis(frc::GenericHID::kRightHand) > DEAD_BAND)
     intake.RunWheels(false); // wheels out
   else 
     intake.StopWheels();
@@ -117,7 +131,12 @@ void Robot::TeleopPeriodic()
   // robot will stop moving when target is in desired range/orientation
   visionSystem.GetValues();
   if (xbox1.GetYButton())
+  {
+    m_usingVision = true;
     visionSystem.SeekTarget(); 
+  }
+  else
+    m_usingVision = false;
 
   // LIFT OPERATION
   if (abs(d2_rightY) > DEAD_BAND)

@@ -31,9 +31,9 @@ private:
     const int BOTTOM_DIO = 1;
 
     // power constants
-    const float LIFT_POWER = 0.8;
+    const float LIFT_POWER = 1.0;
     const float SMOOTH_TIME = 0.25;
-    const float DOWN_POWER = -0.4;
+    const float DOWN_POWER = -0.5;
     const float HOLD_POWER = 0.1;
 
     const int DESIRED_POSITION = 1;
