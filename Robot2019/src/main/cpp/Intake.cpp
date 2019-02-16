@@ -39,12 +39,12 @@ void Intake::RunWheels(bool inOrOut)
 {
     if (inOrOut == true)
     {
-        intakeWheels->Set(ControlMode::PercentOutput, -WHEEL_POWER); //Spin wheels in
+        intakeWheels->Set(ControlMode::PercentOutput, WHEEL_POWER); //Spin wheels in
         debug("Wheels in\n");
     }
     else
     {
-        intakeWheels->Set(ControlMode::PercentOutput, WHEEL_POWER); //Spin wheels out
+        intakeWheels->Set(ControlMode::PercentOutput, WHEEL_SHOOT_POWER); //Spin wheels out
         debug("Wheels out\n");
     }
 }

@@ -17,13 +17,11 @@ public:
     void MoveFrontClimb();
     void MoveBackClimb();
     void ControlComp();
-    void EjectBackPanel();
 
 private:
     // Solenoids
     frc::DoubleSolenoid * frontClimb;
     frc::DoubleSolenoid * backClimb;
-    frc::Solenoid * ejector;
 
     // Compressor(s)
     frc::Compressor * comp;
@@ -34,8 +32,6 @@ private:
     
     const int BACK_FORWARD_ID = 2;
     const int BACK_REVERSE_ID = 3;
-
-    const int EJECTOR_ID = 4;
 
     bool m_frontToggle = true;
     bool m_backToggle = true;

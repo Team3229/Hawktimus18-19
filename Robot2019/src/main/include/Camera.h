@@ -23,7 +23,7 @@ private:
 	cs::VideoSource camera;
 
 	// Constants for Camera Settings
-	const int FPS = 10;
+	const int FPS = 60;
 	const int BRIGHTNESS = 40;
 
 };

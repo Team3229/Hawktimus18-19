@@ -18,8 +18,8 @@ void Robot::RobotInit()
   /*
   m_chooser.SetDefaultOption("With Gyro (Field Oriented)", kDriveNameDefault);
   m_chooser.AddOption("Without Gyro (Robot Oriented)", kDriveNameCustom);
-  frc::SmartDashboard::PutData("Drive Mode", &m_chooser);
   */
+  frc::SmartDashboard::PutString("Drive Mode", m_driveSelected);
 }
 
 void Robot::RobotPeriodic() {}
@@ -44,6 +44,9 @@ void Robot::TeleopInit()
 
 void Robot::TeleopPeriodic()
 {    
+  // Puts drive mode on Dashboard
+  frc::SmartDashboard::PutString("Drive Mode", m_driveSelected);
+
   //Update controller axis values
   d1_leftY = xbox1.GetY(frc::GenericHID::kLeftHand);
   d1_leftX = xbox1.GetX(frc::GenericHID::kLeftHand);
@@ -93,21 +96,8 @@ void Robot::TeleopPeriodic()
   if (xbox1.GetBumper(frc::GenericHID::kLeftHand))
     air.MoveBackClimb(); // toggle back climbing poles
 
-  // ejector
-  if (xbox2.GetAButton())
-    air.EjectBackPanel(); // Ejects panel from back, 1 time use
-
-
   // INTAKE OPERATION
   // wheels
-  /*
-  if (xbox2.GetBumper(frc::GenericHID::kLeftHand))
-    intake.RunWheels(true); // wheels in
-  else if (xbox2.GetBumper(frc::GenericHID::kRightHand))
-    intake.RunWheels(false); // wheels out
-  else 
-    intake.StopWheels();
-  */
   if (xbox2.GetTriggerAxis(frc::GenericHID::kLeftHand) > DEAD_BAND)
     intake.RunWheels(true); // wheels in
   else if (xbox2.GetTriggerAxis(frc::GenericHID::kRightHand) > DEAD_BAND)
