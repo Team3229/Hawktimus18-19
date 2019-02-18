@@ -44,9 +44,6 @@ void Robot::TeleopInit()
 
 void Robot::TeleopPeriodic()
 {    
-  // Puts drive mode on Dashboard
-  frc::SmartDashboard::PutString("Drive Mode", m_driveSelected);
-
   //Update controller axis values
   d1_leftY = xbox1.GetY(frc::GenericHID::kLeftHand);
   d1_leftX = xbox1.GetX(frc::GenericHID::kLeftHand);

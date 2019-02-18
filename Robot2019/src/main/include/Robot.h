@@ -75,8 +75,14 @@ class Robot : public frc::TimedRobot {
   {
     debug("Drive mode switched...\n");
     if (m_driveWithGyro == true)
+    {
+      frc::SmartDashboard::PutString("Drive Mode", "Without Gyro");
       m_driveWithGyro = false;
+    }
     else 
+    {
+      frc::SmartDashboard::PutString("Drive Mode", "With Gyro");
       m_driveWithGyro = true;
+    }
   }
 };
