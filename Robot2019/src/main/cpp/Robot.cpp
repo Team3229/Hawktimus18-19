@@ -19,7 +19,7 @@ void Robot::RobotInit()
   m_chooser.SetDefaultOption("With Gyro (Field Oriented)", kDriveNameDefault);
   m_chooser.AddOption("Without Gyro (Robot Oriented)", kDriveNameCustom);
   */
-  frc::SmartDashboard::PutString("Drive Mode", m_driveSelected);
+  frc::SmartDashboard::PutString("Drive Mode", "With Gyro");
 }
 
 void Robot::RobotPeriodic() {}
@@ -69,10 +69,7 @@ void Robot::TeleopPeriodic()
   
   // swap robot and field orient with button
   if (xbox1.GetTriggerAxis(frc::GenericHID::kRightHand) > DEAD_BAND)
-  {
     SwitchDriveMode();
-    frc::Wait(0.5);
-  }
 
   // speed changer
   if (xbox1.GetAButton())

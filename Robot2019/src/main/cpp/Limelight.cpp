@@ -57,26 +57,25 @@ bool Limelight::IsTargeting()
 
 void Limelight::SeekTarget()
 {
-    //Replace distance setting with skew adjustment
-    /*
     if (abs(m_xOffset) < ANGLE_RANGE)
     {
-        if (abs(m_targetDistance - DESIRED_DISTANCE) < DISTANCE_THRESH) 
+        if (abs(m_skew - DESIRED_SKEW) < SKEW_THRESH) 
             visionChassis->Stop(); // inside desired zone
-        else if (m_targetDistance < DESIRED_DISTANCE)
-            visionChassis->DriveWithoutGyro(m_frdAdjPow, m_stillPow, m_stillPow); // forward
-        else if (m_targetDistance > DESIRED_DISTANCE)              
-            visionChassis->DriveWithoutGyro(m_bckAdjPow, m_stillPow, m_stillPow); // back
+        else if (m_skew > DESIRED_SKEW)
+            visionChassis->DriveWithoutGyro(m_stillPow, m_rightStrafePow, m_stillPow); // right strafe
+        else if (m_skew < DESIRED_SKEW)              
+            visionChassis->DriveWithoutGyro(m_stillPow, m_leftStrafePow, m_stillPow); // left strafe
     }
     else if (m_xOffset > DESIRED_ANGLE)
         visionChassis->DriveWithoutGyro(m_stillPow, m_stillPow, m_rightAdjPow); // right turn
     else if (m_xOffset < DESIRED_ANGLE)
         visionChassis->DriveWithoutGyro(m_stillPow, m_stillPow, m_leftAdjPow); // left turn
-    */
-   if (abs(m_xOffset) < ANGLE_RANGE)
+    /*
+    if (abs(m_xOffset) < ANGLE_RANGE)
         visionChassis->Stop(); // in angle range
     else if (m_xOffset > DESIRED_ANGLE)
         visionChassis->DriveWithoutGyro(m_stillPow, m_stillPow, m_rightAdjPow); // right turn
     else if (m_xOffset < DESIRED_ANGLE)
         visionChassis->DriveWithoutGyro(m_stillPow, m_stillPow, m_leftAdjPow); // left turn
+    */
 }

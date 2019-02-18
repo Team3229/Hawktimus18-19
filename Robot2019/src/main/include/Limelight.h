@@ -32,7 +32,7 @@ private:
     float m_targetDistance; // % of screen filled by current target "ta"
     
     //threshholds and desires
-    const float ANGLE_RANGE = 2.0;
+    const float ANGLE_RANGE = 1.0;
     const float DESIRED_ANGLE = 0.0;
     const float DESIRED_DISTANCE = 0.41; // 5'
     const float DISTANCE_THRESH = 0.05;
@@ -43,10 +43,10 @@ private:
     double m_stillPow = 0.0;
     double m_frdAdjPow = 0.3;
     double m_bckAdjPow = -0.3;
-    double m_leftAdjPow = -0.3;
-    double m_rightAdjPow = 0.3;
-    double m_leftStrafePow = -0.3;
-    double m_rightStrafePow = 0.3;
+    double m_leftAdjPow = -0.33; //turn
+    double m_rightAdjPow = 0.33; //turn
+    double m_leftStrafePow = -0.95;
+    double m_rightStrafePow = 0.95;
 
 };
 

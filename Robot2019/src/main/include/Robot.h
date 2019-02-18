@@ -84,5 +84,6 @@ class Robot : public frc::TimedRobot {
       frc::SmartDashboard::PutString("Drive Mode", "With Gyro");
       m_driveWithGyro = true;
     }
+    frc::Wait(0.5);
   }
 };
