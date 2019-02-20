@@ -57,6 +57,7 @@ bool Limelight::IsTargeting()
 
 void Limelight::SeekTarget()
 {
+    /*
     if (abs(m_xOffset) < ANGLE_RANGE)
     {
         if (abs(m_skew - DESIRED_SKEW) < SKEW_THRESH) 
@@ -70,12 +71,13 @@ void Limelight::SeekTarget()
         visionChassis->DriveWithoutGyro(m_stillPow, m_stillPow, m_rightAdjPow); // right turn
     else if (m_xOffset < DESIRED_ANGLE)
         visionChassis->DriveWithoutGyro(m_stillPow, m_stillPow, m_leftAdjPow); // left turn
-    /*
+    */
+
     if (abs(m_xOffset) < ANGLE_RANGE)
         visionChassis->Stop(); // in angle range
     else if (m_xOffset > DESIRED_ANGLE)
         visionChassis->DriveWithoutGyro(m_stillPow, m_stillPow, m_rightAdjPow); // right turn
     else if (m_xOffset < DESIRED_ANGLE)
         visionChassis->DriveWithoutGyro(m_stillPow, m_stillPow, m_leftAdjPow); // left turn
-    */
+    
 }

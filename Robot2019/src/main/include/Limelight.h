@@ -43,8 +43,8 @@ private:
     double m_stillPow = 0.0;
     double m_frdAdjPow = 0.3;
     double m_bckAdjPow = -0.3;
-    double m_leftAdjPow = -0.33; //turn
-    double m_rightAdjPow = 0.33; //turn
+    double m_leftAdjPow = -0.3; //turn
+    double m_rightAdjPow = 0.3; //turn
     double m_leftStrafePow = -0.95;
     double m_rightStrafePow = 0.95;
 

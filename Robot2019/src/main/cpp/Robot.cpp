@@ -19,7 +19,7 @@ void Robot::RobotInit()
   m_chooser.SetDefaultOption("With Gyro (Field Oriented)", kDriveNameDefault);
   m_chooser.AddOption("Without Gyro (Robot Oriented)", kDriveNameCustom);
   */
-  frc::SmartDashboard::PutString("Drive Mode", "With Gyro");
+  frc::SmartDashboard::PutString("Drive Mode", "Without Gyro");
 }
 
 void Robot::RobotPeriodic() {}
@@ -27,6 +27,8 @@ void Robot::RobotPeriodic() {}
 void Robot::AutonomousInit() 
 {
   chassis.ResetGyro();
+  m_lastUsedSpeed = 1;
+  chassis.ChangeSpeed(1); // slow speed
   debug("Sandstorm starting...\n");
 }
 
@@ -38,7 +40,7 @@ void Robot::AutonomousPeriodic()
 void Robot::TeleopInit() 
 {
   //Needs to be removed before comp:
-  chassis.ResetGyro();
+  //chassis.ResetGyro();
   debug("TeleOp starting...\n");
 }
 
@@ -73,13 +75,22 @@ void Robot::TeleopPeriodic()
 
   // speed changer
   if (xbox1.GetAButton())
+  {
     chassis.ChangeSpeed(2); // normal speed
+    m_lastUsedSpeed = 2;
+  }
 
   if (xbox1.GetBButton())
+  {
     chassis.ChangeSpeed(1); // slow speed
+    m_lastUsedSpeed = 1;
+  }
 
   if (xbox1.GetXButton())
+  {
     chassis.ChangeSpeed(3); // fast
+    m_lastUsedSpeed = 3;
+  }
 
   // PNEUMATICS
   // climber
@@ -117,10 +128,14 @@ void Robot::TeleopPeriodic()
   if (xbox1.GetYButton())
   {
     m_usingVision = true;
+    chassis.ChangeSpeed(2); //normal
     visionSystem.SeekTarget(); 
   }
   else
+  {
     m_usingVision = false;
+    chassis.ChangeSpeed(m_lastUsedSpeed);
+  }
 
   // LIFT OPERATION
   if (abs(d2_rightY) > DEAD_BAND)
