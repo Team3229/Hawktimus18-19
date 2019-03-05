@@ -30,6 +30,8 @@ private:
 	float m_yOffset; // y "ty"
     float m_skew;
     float m_targetDistance; // % of screen filled by current target "ta"
+    float m_vertDistance; //"tvert"
+    float m_shortDistance; // "tshort"
     
     //threshholds and desires
     const float ANGLE_RANGE = 1.0;
@@ -37,7 +39,9 @@ private:
     const float DESIRED_DISTANCE = 0.41; // 5'
     const float DISTANCE_THRESH = 0.05;
     const float DESIRED_SKEW = 0.0;
-    const float SKEW_THRESH = 2.0;
+    const float SKEW_THRESH = 1.5;
+    const float DESIRED_VERT = 44;
+    const float VERT_THRESH = 2;
 
     // drive powers
     double m_stillPow = 0.0;
@@ -45,8 +49,8 @@ private:
     double m_bckAdjPow = -0.3;
     double m_leftAdjPow = -0.3; //turn
     double m_rightAdjPow = 0.3; //turn
-    double m_leftStrafePow = -0.95;
-    double m_rightStrafePow = 0.95;
+    double m_leftStrafePow = -1.0;
+    double m_rightStrafePow = 1.0;
 
 };
 

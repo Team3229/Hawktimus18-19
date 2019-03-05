@@ -16,5 +16,8 @@
     "**/.factorypath": true
   },
   "C_Cpp.default.configurationProvider": "vscode-wpilib",
-  "C_Cpp.intelliSenseEngineFallback": "Disabled"
+  "C_Cpp.intelliSenseEngineFallback": "Disabled",
+  "files.associations": {
+    "cstdlib": "cpp"
+  }
 }
