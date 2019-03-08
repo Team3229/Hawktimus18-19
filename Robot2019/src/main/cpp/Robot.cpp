@@ -27,8 +27,8 @@ void Robot::RobotPeriodic() {}
 void Robot::AutonomousInit() 
 {
   chassis.ResetGyro();
-  m_lastUsedSpeed = 1;
-  chassis.ChangeSpeed(1); // slow speed
+  m_lastUsedSpeed = 3;
+  chassis.ChangeSpeed(3); // turbo speed
   debug("Sandstorm starting...\n");
 }
 

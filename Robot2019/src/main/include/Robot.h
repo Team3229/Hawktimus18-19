@@ -53,7 +53,7 @@ class Robot : public frc::TimedRobot {
   double d1_leftY, d1_leftX, d1_rightX, d2_leftY, d2_rightY;
   bool m_driveWithGyro = false; //Update init driver station message
   bool m_usingVision = false;
-  int m_lastUsedSpeed = 1; // keeps track of last used speed setting
+  int m_lastUsedSpeed = 2; // keeps track of last used speed setting, initialized to normal speed
 
   // Objects of subsystems
   DriveSystem chassis{};
