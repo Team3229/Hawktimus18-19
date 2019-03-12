@@ -43,8 +43,8 @@ void Autonomous::AutoSelectInit() //A method that adds certain autonomous mode o
 {
 	//Display the Autonomous Selection Options on Driver Station
 	chooser.AddDefault(autoCenter, &Center); //Adds the center option
-	chooser.AddObject(autoLeft, &Left); //Adds the left option
-	chooser.AddObject(autoRight, &Right); //Adds the right option
+	chooser.AddOption(autoLeft, &Left); //Adds the left option
+	chooser.AddOption(autoRight, &Right); //Adds the right option
 	frc::SmartDashboard::PutData("Auto Mode", &chooser); //Labels the dropdown box.
 }
 

@@ -18,14 +18,14 @@
 #define GYRO_SPI_PORT 0
 
 //FRC library includes
-#include <Timer.h>
-#include <GenericHID.h>
+#include <frc/Timer.h>
+#include <frc/GenericHID.h>
 #include <math.h>
-#include <RobotDrive.h>
-#include <AnalogGyro.h>
-#include <Drive/DifferentialDrive.h>
-#include <Spark.h>
-#include <SpeedControllerGroup.h>
+#include <frc/RobotDrive.h>
+#include <frc/AnalogGyro.h>
+#include <frc/Drive/DifferentialDrive.h>
+#include <frc/Spark.h>
+#include <frc/SpeedControllerGroup.h>
 
 class ArcadeDrive
 {

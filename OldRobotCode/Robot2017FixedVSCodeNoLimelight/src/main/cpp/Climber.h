@@ -8,7 +8,7 @@
 #define CLIMBER_POWER 1.0
 #define CLIMBER_PWM 4
 
-#include <Spark.h>
+#include <frc/Spark.h>
 
 class Climber
 {

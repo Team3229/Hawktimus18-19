@@ -18,9 +18,9 @@
 #include <string>
 
 //FRC library includes
-#include <SmartDashboard/SendableChooser.h>
-#include <SmartDashboard/SmartDashboard.h>
-#include <Time.h>
+#include <frc/SmartDashboard/SendableChooser.h>
+#include <frc/SmartDashboard/SmartDashboard.h>
+#include <frc/Timer.h>
 
 //Includes from programmer defined classes.
 #include <ArcadeDrive.h>

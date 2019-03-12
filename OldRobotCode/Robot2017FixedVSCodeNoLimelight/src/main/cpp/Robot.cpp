@@ -11,7 +11,7 @@
 
 #include <Robot.h>
 
-class Robot : public frc::IterativeRobot
+class Robot : public frc::TimedRobot
 {
 private:
 	frc::LiveWindow* lw = frc::LiveWindow::GetInstance();

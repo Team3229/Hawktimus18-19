@@ -17,11 +17,11 @@
 #include <string>
 
 //Includes from the frc namespace
-#include <IterativeRobot.h>
-#include <XboxController.h>
-#include <Spark.h>
-#include <LiveWindow/LiveWindow.h>
-#include <Timer.h> //For wait function
+#include <frc/TimedRobot.h>
+#include <frc/XboxController.h>
+#include <frc/Spark.h>
+#include <frc/LiveWindow/LiveWindow.h>
+#include <frc/Timer.h> //For wait function
 
 //Includes from programmer-defined files.
 #include <Climber.h>
