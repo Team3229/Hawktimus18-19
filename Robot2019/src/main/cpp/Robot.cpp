@@ -73,20 +73,21 @@ void Robot::TeleopPeriodic()
   if (xbox1.GetTriggerAxis(frc::GenericHID::kRightHand) > DEAD_BAND)
     SwitchDriveMode();
 
-  // speed changer
-  if (xbox1.GetAButton())
+  // speed changer 
+  // BOTH CONTROLLERS NOW HAVE ACCESS TO THESE
+  if (xbox1.GetAButton() || xbox2.GetAButton())
   {
     chassis.ChangeSpeed(2); // normal speed
     m_lastUsedSpeed = 2;
   }
 
-  if (xbox1.GetBButton())
+  if (xbox1.GetBButton() || xbox2.GetBButton())
   {
     chassis.ChangeSpeed(1); // slow speed
     m_lastUsedSpeed = 1;
   }
 
-  if (xbox1.GetXButton())
+  if (xbox1.GetXButton() || xbox2.GetXButton())
   {
     chassis.ChangeSpeed(3); // fast
     m_lastUsedSpeed = 3;
@@ -138,7 +139,7 @@ void Robot::TeleopPeriodic()
   }
 
   // LIFT OPERATION
-  if (abs(d2_rightY) > DEAD_BAND)
+  if (abs(d2_rightY) > DEAD_BAND && m_lockLift == false)
   {
     if (d2_rightY < 0)
       lift.MoveLift(true); // moves lift up
@@ -148,6 +149,16 @@ void Robot::TeleopPeriodic()
   else 
     lift.StopLift(); // holds lift in place
 
+  // toggles locking the lift
+  if (xbox2.GetYButton())
+  {
+    if (m_lockLift == false)
+      m_lockLift = true;
+    else
+      m_lockLift = false;
+    frc::Wait(0.5);
+  }
+  
 }
 
 void Robot::TestPeriodic() {}

@@ -53,6 +53,7 @@ class Robot : public frc::TimedRobot {
   double d1_leftY, d1_leftX, d1_rightX, d2_leftY, d2_rightY;
   bool m_driveWithGyro = false; //Update init driver station message
   bool m_usingVision = false;
+  bool m_lockLift = false; // Locks the 2nd driver from using lift
   int m_lastUsedSpeed = 2; // keeps track of last used speed setting, initialized to normal speed
 
   // Objects of subsystems
