@@ -156,7 +156,7 @@ void Robot::TeleopPeriodic()
       m_lockLift = true;
     else
       m_lockLift = false;
-    frc::Wait(0.5);
+    frc::Wait(0.25);
   }
   
 }
