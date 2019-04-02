@@ -102,3 +102,27 @@ void DriveSystem::ResetGyro()
 {
 	navxGyro->Reset();
 }
+
+void DriveSystem::DetermineTarget(std::string temp)
+{
+	if (temp == "Other") // Other mode angle determine
+	{
+		m_desiredAngle = OTHER_ANGLE[int((navxGyro->GetYaw() + 225)/90)];
+	}
+	else // Rocket & Hatch mode angle determine
+	{
+		m_desiredAngle = HATCH_ANGLE[int((navxGyro->GetYaw() + 180)/90)];
+	}
+}
+
+void DriveSystem::TurnToTarget()
+{
+	if ((m_desiredAngle - 180) > navxGyro->GetYaw())
+	{
+		DriveWithoutGyro(m_stillPow, m_stillPow, m_rightAdjPow); // right turn
+	}
+	else if ((m_desiredAngle - 180) < navxGyro->GetYaw())
+	{
+		DriveWithoutGyro(m_stillPow, m_stillPow, m_leftAdjPow); // left turn
+	}
+}

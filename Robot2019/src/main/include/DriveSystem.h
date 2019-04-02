@@ -31,6 +31,8 @@ public:
     void ChangeSpeed(int choice);
     double TestGyro();
 	void ResetGyro();
+	void DetermineTarget(std::string temp);
+	void TurnToTarget();
 
 private:
     //TalonSRX's
@@ -42,6 +44,11 @@ private:
 	frc::MecanumDrive * driveTrain; //Drivetrain
 
     AHRS * navxGyro; //navX drive
+
+	//Desired Gyro Angle
+	double m_desiredAngle;
+	const float HATCH_ANGLE[4] = {28.5, 151.5, 208.5, 331.5};
+	const float OTHER_ANGLE[5] = {0.01, 90.0, 180.0, 270.0, 359.9};
 
     //Constants for ports and unique id
 	const int LEFT_LEAD_ID = 1;
@@ -57,6 +64,10 @@ private:
 	const float SMOOTH_TIME = 0.4;
 	const float SAFETY_TIMEOUT = 2.0;
 
+	//Turning powers
+	double m_leftAdjPow = -0.3; //turn
+    double m_rightAdjPow = 0.3; //turn
+	double m_stillPow = 0.0;
 };
 
 #endif // DRIVESYSTEM_H

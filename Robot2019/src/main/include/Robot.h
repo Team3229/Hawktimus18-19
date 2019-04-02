@@ -55,6 +55,7 @@ class Robot : public frc::TimedRobot {
   bool m_usingVision = false;
   bool m_lockLift = false; // Locks the 2nd driver from using lift
   int m_lastUsedSpeed = 2; // keeps track of last used speed setting, initialized to normal speed
+  std::string m_template = "Other"; // 2 templates that the manipulation driver can switch between: "Other" and "Rocket&Hatch"
 
   // Objects of subsystems
   DriveSystem chassis{};

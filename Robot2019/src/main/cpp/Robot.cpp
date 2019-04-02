@@ -20,6 +20,7 @@ void Robot::RobotInit()
   m_chooser.AddOption("Without Gyro (Robot Oriented)", kDriveNameCustom);
   */
   frc::SmartDashboard::PutString("Drive Mode", "Without Gyro");
+  frc::SmartDashboard::PutString("Current Template", m_template);
 }
 
 void Robot::RobotPeriodic() {}
@@ -75,19 +76,19 @@ void Robot::TeleopPeriodic()
 
   // speed changer 
   // BOTH CONTROLLERS NOW HAVE ACCESS TO THESE
-  if (xbox1.GetAButton() || xbox2.GetAButton())
+  if (xbox1.GetAButton())
   {
     chassis.ChangeSpeed(2); // normal speed
     m_lastUsedSpeed = 2;
   }
 
-  if (xbox1.GetBButton() || xbox2.GetBButton())
+  if (xbox1.GetBButton())
   {
     chassis.ChangeSpeed(1); // slow speed
     m_lastUsedSpeed = 1;
   }
 
-  if (xbox1.GetXButton() || xbox2.GetXButton())
+  if (xbox1.GetXButton())
   {
     chassis.ChangeSpeed(3); // fast
     m_lastUsedSpeed = 3;
@@ -123,7 +124,7 @@ void Robot::TeleopPeriodic()
     intake.StopIntakePivot(); // holds intake in place
 
 
-  // LIMELIGHT VISION TRACKING
+  // LIMELIGHT VISION TRACKING AND GYRO ALIGNMENT
   // robot will stop moving when target is in desired range/orientation
   visionSystem.GetValues();
   if (xbox1.GetYButton())
@@ -131,6 +132,8 @@ void Robot::TeleopPeriodic()
     m_usingVision = true;
     chassis.ChangeSpeed(2); //normal
     visionSystem.SeekTarget(); 
+    chassis.DetermineTarget(m_template);
+    chassis.TurnToTarget();
   }
   else
   {
@@ -150,6 +153,7 @@ void Robot::TeleopPeriodic()
     lift.StopLift(); // holds lift in place
 
   // toggles locking the lift
+  /*
   if (xbox2.GetYButton())
   {
     if (m_lockLift == false)
@@ -158,7 +162,18 @@ void Robot::TeleopPeriodic()
       m_lockLift = false;
     frc::Wait(0.25);
   }
+  */
   
+  //toggle angle mode (Rocket Hatch vs. other)
+  if (xbox2.GetXButton())
+  {
+    if (m_template == "Other")
+      m_template = "Rocket&Hatch";
+    else 
+      m_template = "Other";  
+    frc::SmartDashboard::PutString("Current Template", m_template);
+    frc::Wait(0.25);
+  }
 }
 
 void Robot::TestPeriodic() {}
