@@ -30,12 +30,12 @@ private:
     const int PIVOT_PORT = 6;
     
     //Setting intake pivot and wheel speed constants
-    const float WHEEL_POWER = -1.0;
-    const float WHEEL_SHOOT_POWER = 1.0;
-    const float WHEEL_HOLD_POWER = -0.05;
-    const float PIVOT_POWER = 0.4; // was .4
-    const float PIVOT_DOWN_POWER = -.25; // was -.25
-    const float PIVOT_HOLD_POWER = .1; // was .1
+    const float WHEEL_POWER = 1.0;
+    const float WHEEL_SHOOT_POWER = -1.0;
+    const float WHEEL_HOLD_POWER = 0.1;
+    const float PIVOT_POWER = -0.4; // was .4
+    const float PIVOT_DOWN_POWER = .25; // was -.25
+    const float PIVOT_HOLD_POWER = -.1; // was .1
 
 };
 
