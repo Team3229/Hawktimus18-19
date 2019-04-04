@@ -33,6 +33,7 @@ public:
 	void ResetGyro();
 	void DetermineTarget(std::string temp);
 	void TurnToTarget();
+	bool CanTurn();
 
 private:
     //TalonSRX's
@@ -49,6 +50,7 @@ private:
 	double m_desiredAngle;
 	const float HATCH_ANGLE[4] = {28.5, 151.5, 208.5, 331.5};
 	const float OTHER_ANGLE[5] = {0.01, 90.0, 180.0, 270.0, 359.9};
+	const float ANGLE_THRESH = 8.0;
 
     //Constants for ports and unique id
 	const int LEFT_LEAD_ID = 1;

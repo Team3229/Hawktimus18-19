@@ -33,7 +33,7 @@ private:
     const float LIFT_POWER = 1.0;
     const float SMOOTH_TIME = 0.25;
     const float DOWN_POWER = -0.5;
-    const float HOLD_POWER = 0.1;
+    const float HOLD_POWER = 0.15;
 
 };
 

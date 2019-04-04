@@ -34,23 +34,14 @@ private:
     float m_shortDistance; // "tshort"
     
     //threshholds and desires
-    //const float ANGLE_RANGE = 1.0;
-    //const float DESIRED_ANGLE = 0.0;
-    const float DESIRED_DISTANCE = 0.41; // 5'
-    //const float DISTANCE_THRESH = 0.05;
-    //const float DESIRED_SKEW = 0.0;
-    //const float SKEW_THRESH = 1.5;
-    //const float DESIRED_VERT = 44;
-    //const float VERT_THRESH = 2;
-    const float DESIRED_OFFSET = 0;
+    const float STRAFE_RANGE = 4.0;
+
     // drive powers
     double m_stillPow = 0.0;
-    double m_frdAdjPow = 0.3;
-    double m_bckAdjPow = -0.3;
     double m_leftAdjPow = -0.3; //turn
     double m_rightAdjPow = 0.3; //turn
-    double m_leftStrafePow = -1.0;
-    double m_rightStrafePow = 1.0;
+    double m_leftStrafePow = -.55;
+    double m_rightStrafePow = .55;
 
 };
 

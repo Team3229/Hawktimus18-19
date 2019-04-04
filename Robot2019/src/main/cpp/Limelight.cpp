@@ -65,11 +65,15 @@ void Limelight::SeekTarget()
         else if (m_skew < DESIRED_SKEW)              
             visionChassis->DriveWithoutGyro(m_stillPow, m_leftStrafePow, m_stillPow); // left strafe
     }
-*/
-    if (m_xOffset > DESIRED_OFFSET)
+    */
+
+    if (abs(m_xOffset) < STRAFE_RANGE)
+        visionChassis->DriveWithoutGyro(m_stillPow, m_stillPow, m_stillPow); // stop
+    else if (m_xOffset > 0)
         visionChassis->DriveWithoutGyro(m_stillPow, m_rightStrafePow, m_stillPow); // right strafe
-    else if (m_xOffset < DESIRED_OFFSET)
+    else if (m_xOffset < 0)
         visionChassis->DriveWithoutGyro(m_stillPow, m_leftStrafePow, m_stillPow); // left strafe
+    
 
     /*
     if (abs(m_xOffset) < ANGLE_RANGE)

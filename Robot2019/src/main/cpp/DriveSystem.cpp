@@ -117,12 +117,25 @@ void DriveSystem::DetermineTarget(std::string temp)
 
 void DriveSystem::TurnToTarget()
 {
-	if ((m_desiredAngle - 180) > navxGyro->GetYaw())
+	if (CanTurn() == true)
 	{
-		DriveWithoutGyro(m_stillPow, m_stillPow, m_rightAdjPow); // right turn
+		if ((m_desiredAngle - 180) > navxGyro->GetYaw())
+		{
+			DriveWithoutGyro(m_stillPow, m_stillPow, m_rightAdjPow); // right turn
+		}
+		else if ((m_desiredAngle - 180) < navxGyro->GetYaw())
+		{
+			DriveWithoutGyro(m_stillPow, m_stillPow, m_leftAdjPow); // left turn
+		}
 	}
-	else if ((m_desiredAngle - 180) < navxGyro->GetYaw())
-	{
-		DriveWithoutGyro(m_stillPow, m_stillPow, m_leftAdjPow); // left turn
-	}
+	else
+		DriveWithoutGyro(m_stillPow, m_stillPow, m_stillPow); 
+}
+
+bool DriveSystem::CanTurn()
+{
+	if (abs((m_desiredAngle - 180) - navxGyro->GetYaw()) > ANGLE_THRESH)
+		return true;
+	else
+		return false;
 }

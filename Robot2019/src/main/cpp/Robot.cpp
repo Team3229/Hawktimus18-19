@@ -131,9 +131,11 @@ void Robot::TeleopPeriodic()
   {
     m_usingVision = true;
     chassis.ChangeSpeed(2); //normal
-    visionSystem.SeekTarget(); 
     chassis.DetermineTarget(m_template);
-    chassis.TurnToTarget();
+    if (chassis.CanTurn())
+      chassis.TurnToTarget();
+    else
+      visionSystem.SeekTarget(); 
   }
   else
   {
@@ -168,7 +170,7 @@ void Robot::TeleopPeriodic()
   if (xbox2.GetXButton())
   {
     if (m_template == "Other")
-      m_template = "Rocket&Hatch";
+      m_template = "Rocket Hatch";
     else 
       m_template = "Other";  
     frc::SmartDashboard::PutString("Current Template", m_template);
